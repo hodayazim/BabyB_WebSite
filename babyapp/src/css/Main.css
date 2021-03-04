@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  font-family: "VrelaRound-Regular", source-code-pro, Menlo, Monaco, Consolas,
+    "Courier New", monospace;
+}
+
+.TableMain {
+  height: 30px;
+  align-items: center;
+  margin-bottom: 38px;
+}
+
+.imgCategory {
+  width: 440px;
+  height: 595px;
+  margin: 10px;
+  margin-top: 0;
+  border-radius: 0.5em;
+}
+
+/* code {
+  font-family: "VrelaRound-Regular", source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+} */
+
+.manuButton {
+  height: 31px;
+  width: 83px;
+  margin: 5px;
+}
+
+.title {
+  color: #b83258;
+  font-weight: 700;
+  font-size: 3.2em;
+}
+
+article.conteiner_imgCategory {
+  padding: 4em;
+  /* background-image: url(//www.yummyyummy.co.il/wp-content/uploads/2020/05/sliderbackground.png); */
+}
+
+.parallax {
+  width: 100%;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+article.about {
+  padding: 3em;
+  font-size: 1.27em;
+  min-block-size: 210px;
+}
+
+article.WhyOur,
+article.CompenyCarousel {
+  padding: 3em;
+  font-size: 1.27em;
+}
+
+table.tableIcon {
+  display: inline-flex;
+}
+
+tbody {
+  display: inline-flex;
+}
+
+tr {
+  padding: 2em;
+}
+
+.iconImg {
+  width: 30px;
+  height: 30px;
+}
+
+/* .iconImg:hover {
+  width: 60px;
+  height: 60px;
+} */
+
+tr.tableIcon_tr:hover {
+  transform: scale(1.35);
+}
+
+.btm_img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #c29595c4;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  width: 210px;
+  height: 50px;
+  position: absolute;
+  font-size: 20px;
+  transform: translate(-50%, -50%);
+}
+
+.booster_button {
+  top: 95%;
+  left: 72.5%;
+}
+
+.fooding_button {
+  top: 95%;
+  left: 49%;
+}
+
+.carriage_button {
+  top: 95%;
+  left: 27%;
+}
+
+.imgCategory {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+h2 {
+  margin-bottom: 0;
+}

@@ -1,0 +1,12 @@
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Dal\bin\Debug\Dal.dll.config
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Dal\bin\Debug\Dal.dll
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Dal\bin\Debug\Dal.pdb
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Dal\bin\Debug\EntityFramework.dll
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Dal\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Dal\bin\Debug\EntityFramework.xml
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Dal\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Dal\obj\Debug\Dal.csproj.CoreCompileInputs.cache
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Dal\obj\Debug\Dal.csproj.CopyComplete
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Dal\obj\Debug\Dal.dll
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Dal\obj\Debug\Dal.pdb
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Dal\obj\Debug\Dal.csprojAssemblyReference.cache

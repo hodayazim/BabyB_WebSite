@@ -1,0 +1,15 @@
+{
+  "short_name": "Baby B - store",
+  "name": "Create React App Sample",
+  "icons": [
+      {
+      "src": "favicon.ico",
+      "type": "image/svg",
+      "sizes": "612x612"
+    }
+  ],
+  "start_url": ".",
+  "display": "standdalone",
+  "theme_color": "#0d00000",
+  "background_color": "#ffffff"
+}

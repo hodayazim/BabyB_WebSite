@@ -1,0 +1,164 @@
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff !important;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 20px; /* width of the entire scrollbar */
+  border-left: 1px solid white;
+}
+
+body::-webkit-scrollbar-track {
+  background: rgb(247, 237, 240); /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #c74c64; /* color of the scroll thumb */
+  border-radius: 10px; /* roundness of the scroll thumb */
+  border: 4px solid rgb(247, 237, 240); /* creates padding around scroll thumb */
+}
+
+.App {
+  margin-top: 150px;
+  font-family: "VarelaRound-Regular", Ariel, source-code-pro, Menlo, Monaco,
+    Consolas, "Courier New", monospace;
+  text-align: center;
+  direction: rtl;
+}
+
+.bodyApp {
+  padding-top: 3em;
+  min-height: 500px;
+}
+
+input,
+button:focus {
+  outline: none;
+  padding: 0.5em 1em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  /* color: white; */
+  /*justify-content: center;*/
+  /* min-height: 100vh; */
+}
+
+.input {
+  min-width: 20px;
+  display: block;
+  border-radius: 0.3em;
+  border-style: solid;
+}
+
+.SubmitSave {
+  width: 100px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+form {
+  direction: rtl;
+  height: 460px;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: -webkit-center;
+}
+
+.manuButton {
+  position: static;
+  top: 100px;
+  left: 50px;
+  margin: 20px;
+  position: relative;
+}
+
+footer {
+  bottom: 0;
+  height: 50px;
+  position: fixed;
+  font-size: 400px;
+  background-color: #c29595;
+  -webkit-margin-bottom-collapse: collapse;
+}
+
+.span {
+  align-self: flex-end;
+}
+
+.topbtn {
+  left: 20px;
+  bottom: 7em;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  color: #ff8f75;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+article,
+aside,
+blockquote,
+body,
+button,
+code,
+dd,
+div,
+dl,
+dt,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+input,
+legend,
+li,
+menu,
+nav,
+ol,
+p,
+pre,
+section,
+td,
+textarea,
+th,
+ul {
+  margin: 0;
+  padding: 0;
+}

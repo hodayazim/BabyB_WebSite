@@ -1,0 +1,26 @@
+<mat-form-field class="example-full-width">
+                <mat-label>בית ספר:</mat-label>
+                <input formControlName="schoolCode" #name matInput [formControl]="myControl" [matAutocomplete]="auto" (input)="_filter(name.value)">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" >
+                    <mat-option *ngFor="let option of schoolList" [value]="option.SchoolCode" >
+                      {{option.SchoolName}}
+                    </mat-option>
+                  </mat-autocomplete>
+            </mat-form-field>
+
+
+getListOfSchool()
+  {
+   this.filteredOptions=  this.schoolService.schoolList()
+   this.schoolService.schoolList().subscribe(res=>{this.allSchools=res; this._filter("")})
+  }
+
+   _filter(value: string) {
+    
+
+    this.schoolList= this.allSchools.filter(option => option.SchoolName.indexOf(value) === 0);
+  }
+
+  filteredOptions: Observable<School[]>;
+
+    schoolList:School[]=[];

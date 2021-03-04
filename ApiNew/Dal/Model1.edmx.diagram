@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5b8ced79e1764c01b1efc6114aea2d6d" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="Baby_BModel.Account" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.Category" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.ChildrenArchive" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.ChildrenFamily" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.DefaultTemplates" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.Keywords" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.OldOrders" Width="1.5" PointX="9.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.OldOrdersArchive" Width="1.5" PointX="12" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.OrdersProducts" Width="1.5" PointX="9.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.ProductImage" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.Products" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.ShoppingCart" Width="1.5" PointX="7.5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.SubCategory" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.SubscriptionArchive" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.Users" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.AccountArchive" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Baby_BModel.UsersArchive" Width="1.5" PointX="11.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="Baby_BModel.FK_ChildrenFamily_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="Baby_BModel.FK_Users_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="Baby_BModel.FK_SubCategory_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="Baby_BModel.FK_ChildrenArchive_ChildrenFamily" ManuallyRouted="false" />
+        <AssociationConnector Association="Baby_BModel.FK_OldOrders_ShoppingCart" ManuallyRouted="false" />
+        <AssociationConnector Association="Baby_BModel.FK_OldOrdersArchive_OldOrders1" ManuallyRouted="false" />
+        <AssociationConnector Association="Baby_BModel.FK_OrdersProducts_ShoppingCart" ManuallyRouted="false" />
+        <AssociationConnector Association="Baby_BModel.FK_ProductImage_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="Baby_BModel.FK_Products_SubCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="Baby_BModel.FK_ShoppingCart_Products1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

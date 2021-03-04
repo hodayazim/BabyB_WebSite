@@ -1,0 +1,50 @@
+div.col.Product {
+  /* height: 520px; */
+  height: 40em;
+}
+
+div.row-cols-1,
+div.row-cols-md-4 {
+  margin-top: 2em;
+}
+
+div.card {
+  width: 18rem;
+  height: 90% !important;
+}
+
+div.Product {
+  direction: ltr;
+  padding-right: 3em;
+}
+
+div.col {
+  margin-top: 0;
+}
+
+p.card-text {
+  height: 6em;
+  width: 18em;
+  overflow: hidden;
+  color: #d52e3f;
+}
+.row-cols-md-4 > * {
+  max-width: 23%;
+}
+
+a.LinkCard ~ h5.card-title {
+  font-weight: 600;
+}
+
+h5.card-title {
+  direction: rtl;
+
+}
+/* a.LinkCard:not:hover h5.card-title {
+  font-weight: 600;
+} */
+
+/* 
+a.LinkCard:hover {
+  color: #d52e3f;
+} */

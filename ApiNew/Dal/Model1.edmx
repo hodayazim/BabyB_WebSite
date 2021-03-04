@@ -1,0 +1,1066 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Baby_BModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="IdAccount" />
+          </Key>
+          <Property Name="IdAccount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FamilyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdParent" Type="int" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApartmentNumber" Type="int" Nullable="false" />
+          <Property Name="HomeNumber" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Baby_B.dbo.AccountArchive' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AccountArchive">
+          <Key>
+            <PropertyRef Name="IdAccount" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="Street" />
+            <PropertyRef Name="ApartmentNumber" />
+          </Key>
+          <Property Name="IdAccount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FamilyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdParent" Type="int" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApartmentNumber" Type="int" Nullable="false" />
+          <Property Name="HomeNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="IdCategory" />
+          </Key>
+          <Property Name="IdCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCategory" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChildrenArchive">
+          <Key>
+            <PropertyRef Name="ChildCode" />
+          </Key>
+          <Property Name="ChildCode" Type="int" Nullable="false" />
+          <Property Name="IdMothre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFather" Type="int" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="20" />
+          <Property Name="DateBorn" Type="date" />
+        </EntityType>
+        <EntityType Name="ChildrenFamily">
+          <Key>
+            <PropertyRef Name="ChildCode" />
+          </Key>
+          <Property Name="ChildCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAccount" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BirthdayDate" Type="date" />
+        </EntityType>
+        <EntityType Name="DefaultTemplates">
+          <Key>
+            <PropertyRef Name="IdTemplates" />
+          </Key>
+          <Property Name="IdTemplates" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameTemplates" Type="varchar" MaxLength="1" />
+          <Property Name="StringSolution" Type="text" />
+        </EntityType>
+        <EntityType Name="Keywords">
+          <Key>
+            <PropertyRef Name="IdKeywords" />
+          </Key>
+          <Property Name="IdKeywords" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameKeywords" Type="nvarchar" MaxLength="1" />
+          <Property Name="PossibleContent" Type="text" />
+        </EntityType>
+        <EntityType Name="OldOrders">
+          <Key>
+            <PropertyRef Name="PurchaseNumber" />
+          </Key>
+          <Property Name="PurchaseNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdShoppingCart" Type="int" />
+          <Property Name="TotalPeace" Type="money" />
+          <Property Name="DateOfAcquisition" Type="date" />
+          <Property Name="DateOfReceipt" Type="date" />
+        </EntityType>
+        <EntityType Name="OldOrdersArchive">
+          <Key>
+            <PropertyRef Name="PurchaseNumber" />
+          </Key>
+          <Property Name="PurchaseNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdShoppingCart" Type="int" />
+          <Property Name="TotalPeace" Type="money" />
+          <Property Name="DateOfAcquisition" Type="date" />
+          <Property Name="DateOfReceipt" Type="date" />
+        </EntityType>
+        <EntityType Name="OrdersProducts">
+          <Key>
+            <PropertyRef Name="IdShoppingCart" />
+          </Key>
+          <Property Name="IdShoppingCart" Type="int" Nullable="false" />
+          <Property Name="IdProduct" Type="int" />
+          <Property Name="NameProduct" Type="nvarchar" MaxLength="30" />
+          <Property Name="Category" Type="varchar" MaxLength="20" />
+          <Property Name="Subcategory" Type="varchar" MaxLength="30" />
+          <Property Name="DescriptionProduct" Type="varchar" MaxLength="300" />
+          <Property Name="UnitsInStock" Type="smallint" />
+          <Property Name="Price" Type="money" />
+          <Property Name="Color" Type="nvarchar" MaxLength="1" />
+          <Property Name="DiscountPercentage" Type="tinyint" />
+          <Property Name="ImageOfProduct" Type="image" />
+          <Property Name="Company" Type="varchar" MaxLength="20" />
+          <Property Name="size" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="ProductImage">
+          <Key>
+            <PropertyRef Name="IdProductImage" />
+          </Key>
+          <Property Name="IdProductImage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProduct" Type="int" />
+          <Property Name="PathImage" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameProduct" Type="nvarchar" MaxLength="45" />
+          <Property Name="BarcodeProduct" Type="nvarchar" MaxLength="30" />
+          <Property Name="IdSubcategory" Type="int" Nullable="false" />
+          <Property Name="DescriptionProduct" Type="nvarchar" MaxLength="1000" />
+          <Property Name="UnitsInStock" Type="smallint" />
+          <Property Name="Price" Type="money" />
+          <Property Name="Color" Type="nvarchar" MaxLength="20" />
+          <Property Name="DiscountPercentage" Type="tinyint" />
+          <Property Name="Company" Type="varchar" MaxLength="20" />
+          <Property Name="size" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="ShoppingCart">
+          <Key>
+            <PropertyRef Name="IdShoppingCart" />
+          </Key>
+          <Property Name="IdShoppingCart" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="IdProduct" Type="int" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="Subcategory" Type="nvarchar" MaxLength="50" />
+          <Property Name="AmountOfPurchases" Type="int" />
+          <Property Name="DateAdded" Type="date" />
+          <Property Name="DiscountPercentage" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="IdSubCategory" />
+          </Key>
+          <Property Name="IdSubCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameSubCategory" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdCategory" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubscriptionArchive">
+          <Key>
+            <PropertyRef Name="IdFamily" />
+          </Key>
+          <Property Name="IdFamily" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="ParetntsfirstName" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="20" />
+          <Property Name="EMail" Type="varchar" MaxLength="35" />
+          <Property Name="GetPostMail" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAccount" Type="int" />
+          <Property Name="FirstNameUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastNameUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserPassword" Type="varchar" MaxLength="15" />
+          <Property Name="UserStatus" Type="int" />
+          <Property Name="EMail" Type="nvarchar" MaxLength="100" />
+          <Property Name="GetPostMail" Type="bit" />
+          <Property Name="TotalPayments" Type="smallint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Baby_B.dbo.UsersArchive' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UsersArchive">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAccount" Type="int" />
+          <Property Name="FirstNameUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastNameUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserPassword" Type="varchar" MaxLength="15" />
+          <Property Name="UserStatus" Type="int" />
+          <Property Name="EMail" Type="nvarchar" MaxLength="100" />
+          <Property Name="GetPostMail" Type="bit" />
+          <Property Name="TotalPayments" Type="smallint" />
+        </EntityType>
+        <Association Name="FK_ChildrenArchive_ChildrenFamily">
+          <End Role="ChildrenFamily" Type="Self.ChildrenFamily" Multiplicity="1" />
+          <End Role="ChildrenArchive" Type="Self.ChildrenArchive" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ChildrenFamily">
+              <PropertyRef Name="ChildCode" />
+            </Principal>
+            <Dependent Role="ChildrenArchive">
+              <PropertyRef Name="ChildCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChildrenFamily_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="ChildrenFamily" Type="Self.ChildrenFamily" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="IdAccount" />
+            </Principal>
+            <Dependent Role="ChildrenFamily">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OldOrders_ShoppingCart">
+          <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="0..1" />
+          <End Role="OldOrders" Type="Self.OldOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingCart">
+              <PropertyRef Name="IdShoppingCart" />
+            </Principal>
+            <Dependent Role="OldOrders">
+              <PropertyRef Name="IdShoppingCart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OldOrdersArchive_OldOrders1">
+          <End Role="OldOrders" Type="Self.OldOrders" Multiplicity="1" />
+          <End Role="OldOrdersArchive" Type="Self.OldOrdersArchive" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="OldOrders">
+              <PropertyRef Name="PurchaseNumber" />
+            </Principal>
+            <Dependent Role="OldOrdersArchive">
+              <PropertyRef Name="PurchaseNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersProducts_ShoppingCart">
+          <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="1" />
+          <End Role="OrdersProducts" Type="Self.OrdersProducts" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingCart">
+              <PropertyRef Name="IdShoppingCart" />
+            </Principal>
+            <Dependent Role="OrdersProducts">
+              <PropertyRef Name="IdShoppingCart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductImage_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="ProductImage" Type="Self.ProductImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="ProductImage">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_SubCategory">
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="IdSubCategory" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="IdSubcategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCart_Products1">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="ShoppingCart">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategory_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="IdAccount" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Baby_BModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChildrenArchive" EntityType="Self.ChildrenArchive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChildrenFamily" EntityType="Self.ChildrenFamily" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DefaultTemplates" EntityType="Self.DefaultTemplates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Keywords" EntityType="Self.Keywords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OldOrders" EntityType="Self.OldOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OldOrdersArchive" EntityType="Self.OldOrdersArchive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrdersProducts" EntityType="Self.OrdersProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductImage" EntityType="Self.ProductImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShoppingCart" EntityType="Self.ShoppingCart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubscriptionArchive" EntityType="Self.SubscriptionArchive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountArchive" EntityType="Self.AccountArchive" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AccountArchive].[IdAccount] AS [IdAccount], 
+    [AccountArchive].[FamilyName] AS [FamilyName], 
+    [AccountArchive].[IdParent] AS [IdParent], 
+    [AccountArchive].[City] AS [City], 
+    [AccountArchive].[Street] AS [Street], 
+    [AccountArchive].[ApartmentNumber] AS [ApartmentNumber], 
+    [AccountArchive].[HomeNumber] AS [HomeNumber]
+    FROM [dbo].[AccountArchive] AS [AccountArchive]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UsersArchive" EntityType="Self.UsersArchive" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UsersArchive].[IdUser] AS [IdUser], 
+    [UsersArchive].[IdAccount] AS [IdAccount], 
+    [UsersArchive].[FirstNameUser] AS [FirstNameUser], 
+    [UsersArchive].[LastNameUser] AS [LastNameUser], 
+    [UsersArchive].[UserPassword] AS [UserPassword], 
+    [UsersArchive].[UserStatus] AS [UserStatus], 
+    [UsersArchive].[EMail] AS [EMail], 
+    [UsersArchive].[GetPostMail] AS [GetPostMail], 
+    [UsersArchive].[TotalPayments] AS [TotalPayments]
+    FROM [dbo].[UsersArchive] AS [UsersArchive]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ChildrenArchive_ChildrenFamily" Association="Self.FK_ChildrenArchive_ChildrenFamily">
+            <End Role="ChildrenFamily" EntitySet="ChildrenFamily" />
+            <End Role="ChildrenArchive" EntitySet="ChildrenArchive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChildrenFamily_Account" Association="Self.FK_ChildrenFamily_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="ChildrenFamily" EntitySet="ChildrenFamily" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OldOrders_ShoppingCart" Association="Self.FK_OldOrders_ShoppingCart">
+            <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+            <End Role="OldOrders" EntitySet="OldOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OldOrdersArchive_OldOrders1" Association="Self.FK_OldOrdersArchive_OldOrders1">
+            <End Role="OldOrders" EntitySet="OldOrders" />
+            <End Role="OldOrdersArchive" EntitySet="OldOrdersArchive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersProducts_ShoppingCart" Association="Self.FK_OrdersProducts_ShoppingCart">
+            <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+            <End Role="OrdersProducts" EntitySet="OrdersProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductImage_Products" Association="Self.FK_ProductImage_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductImage" EntitySet="ProductImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_SubCategory" Association="Self.FK_Products_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategory" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCart_Products1" Association="Self.FK_ShoppingCart_Products1">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategory_Category" Association="Self.FK_SubCategory_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="SubCategory" EntitySet="SubCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Account" Association="Self.FK_Users_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Baby_BModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="IdAccount" />
+          </Key>
+          <Property Name="IdAccount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FamilyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdParent" Type="Int32" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApartmentNumber" Type="Int32" Nullable="false" />
+          <Property Name="HomeNumber" Type="Int32" />
+          <NavigationProperty Name="ChildrenFamily" Relationship="Self.FK_ChildrenFamily_Account" FromRole="Account" ToRole="ChildrenFamily" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Account" FromRole="Account" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="IdCategory" />
+          </Key>
+          <Property Name="IdCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SubCategory" Relationship="Self.FK_SubCategory_Category" FromRole="Category" ToRole="SubCategory" />
+        </EntityType>
+        <EntityType Name="ChildrenArchive">
+          <Key>
+            <PropertyRef Name="ChildCode" />
+          </Key>
+          <Property Name="ChildCode" Type="Int32" Nullable="false" />
+          <Property Name="IdMothre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFather" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DateBorn" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ChildrenFamily" Relationship="Self.FK_ChildrenArchive_ChildrenFamily" FromRole="ChildrenArchive" ToRole="ChildrenFamily" />
+        </EntityType>
+        <EntityType Name="ChildrenFamily">
+          <Key>
+            <PropertyRef Name="ChildCode" />
+          </Key>
+          <Property Name="ChildCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAccount" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BirthdayDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_ChildrenFamily_Account" FromRole="ChildrenFamily" ToRole="Account" />
+          <NavigationProperty Name="ChildrenArchive" Relationship="Self.FK_ChildrenArchive_ChildrenFamily" FromRole="ChildrenFamily" ToRole="ChildrenArchive" />
+        </EntityType>
+        <EntityType Name="DefaultTemplates">
+          <Key>
+            <PropertyRef Name="IdTemplates" />
+          </Key>
+          <Property Name="IdTemplates" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameTemplates" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="StringSolution" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Keywords">
+          <Key>
+            <PropertyRef Name="IdKeywords" />
+          </Key>
+          <Property Name="IdKeywords" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameKeywords" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="PossibleContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OldOrders">
+          <Key>
+            <PropertyRef Name="PurchaseNumber" />
+          </Key>
+          <Property Name="PurchaseNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdShoppingCart" Type="Int32" />
+          <Property Name="TotalPeace" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DateOfAcquisition" Type="DateTime" Precision="0" />
+          <Property Name="DateOfReceipt" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ShoppingCart" Relationship="Self.FK_OldOrders_ShoppingCart" FromRole="OldOrders" ToRole="ShoppingCart" />
+          <NavigationProperty Name="OldOrdersArchive" Relationship="Self.FK_OldOrdersArchive_OldOrders1" FromRole="OldOrders" ToRole="OldOrdersArchive" />
+        </EntityType>
+        <EntityType Name="OldOrdersArchive">
+          <Key>
+            <PropertyRef Name="PurchaseNumber" />
+          </Key>
+          <Property Name="PurchaseNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdShoppingCart" Type="Int32" />
+          <Property Name="TotalPeace" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DateOfAcquisition" Type="DateTime" Precision="0" />
+          <Property Name="DateOfReceipt" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="OldOrders" Relationship="Self.FK_OldOrdersArchive_OldOrders1" FromRole="OldOrdersArchive" ToRole="OldOrders" />
+        </EntityType>
+        <EntityType Name="OrdersProducts">
+          <Key>
+            <PropertyRef Name="IdShoppingCart" />
+          </Key>
+          <Property Name="IdShoppingCart" Type="Int32" Nullable="false" />
+          <Property Name="IdProduct" Type="Int32" />
+          <Property Name="NameProduct" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Subcategory" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DescriptionProduct" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="UnitsInStock" Type="Int16" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Color" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="DiscountPercentage" Type="Byte" />
+          <Property Name="ImageOfProduct" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Company" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="size" Type="Byte" />
+          <NavigationProperty Name="ShoppingCart" Relationship="Self.FK_OrdersProducts_ShoppingCart" FromRole="OrdersProducts" ToRole="ShoppingCart" />
+        </EntityType>
+        <EntityType Name="ProductImage">
+          <Key>
+            <PropertyRef Name="IdProductImage" />
+          </Key>
+          <Property Name="IdProductImage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProduct" Type="Int32" />
+          <Property Name="PathImage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_ProductImage_Products" FromRole="ProductImage" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameProduct" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="BarcodeProduct" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IdSubcategory" Type="Int32" Nullable="false" />
+          <Property Name="DescriptionProduct" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="UnitsInStock" Type="Int16" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Color" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DiscountPercentage" Type="Byte" />
+          <Property Name="Company" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="size" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProductImage" Relationship="Self.FK_ProductImage_Products" FromRole="Products" ToRole="ProductImage" />
+          <NavigationProperty Name="SubCategory" Relationship="Self.FK_Products_SubCategory" FromRole="Products" ToRole="SubCategory" />
+          <NavigationProperty Name="ShoppingCart" Relationship="Self.FK_ShoppingCart_Products1" FromRole="Products" ToRole="ShoppingCart" />
+        </EntityType>
+        <EntityType Name="ShoppingCart">
+          <Key>
+            <PropertyRef Name="IdShoppingCart" />
+          </Key>
+          <Property Name="IdShoppingCart" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="IdProduct" Type="Int32" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Subcategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AmountOfPurchases" Type="Int32" />
+          <Property Name="DateAdded" Type="DateTime" Precision="0" />
+          <Property Name="DiscountPercentage" Type="Byte" />
+          <NavigationProperty Name="OldOrders" Relationship="Self.FK_OldOrders_ShoppingCart" FromRole="ShoppingCart" ToRole="OldOrders" />
+          <NavigationProperty Name="OrdersProducts" Relationship="Self.FK_OrdersProducts_ShoppingCart" FromRole="ShoppingCart" ToRole="OrdersProducts" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_ShoppingCart_Products1" FromRole="ShoppingCart" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="IdSubCategory" />
+          </Key>
+          <Property Name="IdSubCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameSubCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdCategory" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_SubCategory_Category" FromRole="SubCategory" ToRole="Category" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_SubCategory" FromRole="SubCategory" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="SubscriptionArchive">
+          <Key>
+            <PropertyRef Name="IdFamily" />
+          </Key>
+          <Property Name="IdFamily" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="ParetntsfirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EMail" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="GetPostMail" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAccount" Type="Int32" />
+          <Property Name="FirstNameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastNameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserPassword" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="UserStatus" Type="Int32" />
+          <Property Name="EMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GetPostMail" Type="Boolean" />
+          <Property Name="TotalPayments" Type="Int16" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Users_Account" FromRole="Users" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="AccountArchive">
+          <Key>
+            <PropertyRef Name="IdAccount" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="Street" />
+            <PropertyRef Name="ApartmentNumber" />
+          </Key>
+          <Property Name="IdAccount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FamilyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdParent" Type="Int32" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApartmentNumber" Type="Int32" Nullable="false" />
+          <Property Name="HomeNumber" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UsersArchive">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAccount" Type="Int32" />
+          <Property Name="FirstNameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastNameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserPassword" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="UserStatus" Type="Int32" />
+          <Property Name="EMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GetPostMail" Type="Boolean" />
+          <Property Name="TotalPayments" Type="Int16" />
+        </EntityType>
+        <Association Name="FK_ChildrenFamily_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="ChildrenFamily" Type="Self.ChildrenFamily" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="IdAccount" />
+            </Principal>
+            <Dependent Role="ChildrenFamily">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="IdAccount" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategory_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChildrenArchive_ChildrenFamily">
+          <End Role="ChildrenFamily" Type="Self.ChildrenFamily" Multiplicity="1" />
+          <End Role="ChildrenArchive" Type="Self.ChildrenArchive" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ChildrenFamily">
+              <PropertyRef Name="ChildCode" />
+            </Principal>
+            <Dependent Role="ChildrenArchive">
+              <PropertyRef Name="ChildCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OldOrders_ShoppingCart">
+          <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="0..1" />
+          <End Role="OldOrders" Type="Self.OldOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingCart">
+              <PropertyRef Name="IdShoppingCart" />
+            </Principal>
+            <Dependent Role="OldOrders">
+              <PropertyRef Name="IdShoppingCart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OldOrdersArchive_OldOrders1">
+          <End Role="OldOrders" Type="Self.OldOrders" Multiplicity="1" />
+          <End Role="OldOrdersArchive" Type="Self.OldOrdersArchive" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="OldOrders">
+              <PropertyRef Name="PurchaseNumber" />
+            </Principal>
+            <Dependent Role="OldOrdersArchive">
+              <PropertyRef Name="PurchaseNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersProducts_ShoppingCart">
+          <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="1" />
+          <End Role="OrdersProducts" Type="Self.OrdersProducts" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingCart">
+              <PropertyRef Name="IdShoppingCart" />
+            </Principal>
+            <Dependent Role="OrdersProducts">
+              <PropertyRef Name="IdShoppingCart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductImage_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="ProductImage" Type="Self.ProductImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="ProductImage">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_SubCategory">
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="IdSubCategory" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="IdSubcategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCart_Products1">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="ShoppingCart">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Baby_BEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account" EntityType="Self.Account" />
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="ChildrenArchive" EntityType="Self.ChildrenArchive" />
+          <EntitySet Name="ChildrenFamily" EntityType="Self.ChildrenFamily" />
+          <EntitySet Name="DefaultTemplates" EntityType="Self.DefaultTemplates" />
+          <EntitySet Name="Keywords" EntityType="Self.Keywords" />
+          <EntitySet Name="OldOrders" EntityType="Self.OldOrders" />
+          <EntitySet Name="OldOrdersArchive" EntityType="Self.OldOrdersArchive" />
+          <EntitySet Name="OrdersProducts" EntityType="Self.OrdersProducts" />
+          <EntitySet Name="ProductImage" EntityType="Self.ProductImage" />
+          <EntitySet Name="Products" EntityType="Self.Products" />
+          <EntitySet Name="ShoppingCart" EntityType="Self.ShoppingCart" />
+          <EntitySet Name="SubCategory" EntityType="Self.SubCategory" />
+          <EntitySet Name="SubscriptionArchive" EntityType="Self.SubscriptionArchive" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="AccountArchive" EntityType="Self.AccountArchive" />
+          <EntitySet Name="UsersArchive" EntityType="Self.UsersArchive" />
+          <AssociationSet Name="FK_ChildrenFamily_Account" Association="Self.FK_ChildrenFamily_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="ChildrenFamily" EntitySet="ChildrenFamily" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Account" Association="Self.FK_Users_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategory_Category" Association="Self.FK_SubCategory_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="SubCategory" EntitySet="SubCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChildrenArchive_ChildrenFamily" Association="Self.FK_ChildrenArchive_ChildrenFamily">
+            <End Role="ChildrenFamily" EntitySet="ChildrenFamily" />
+            <End Role="ChildrenArchive" EntitySet="ChildrenArchive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OldOrders_ShoppingCart" Association="Self.FK_OldOrders_ShoppingCart">
+            <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+            <End Role="OldOrders" EntitySet="OldOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OldOrdersArchive_OldOrders1" Association="Self.FK_OldOrdersArchive_OldOrders1">
+            <End Role="OldOrders" EntitySet="OldOrders" />
+            <End Role="OldOrdersArchive" EntitySet="OldOrdersArchive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersProducts_ShoppingCart" Association="Self.FK_OrdersProducts_ShoppingCart">
+            <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+            <End Role="OrdersProducts" EntitySet="OrdersProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductImage_Products" Association="Self.FK_ProductImage_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductImage" EntitySet="ProductImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_SubCategory" Association="Self.FK_Products_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategory" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCart_Products1" Association="Self.FK_ShoppingCart_Products1">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Baby_BModelStoreContainer" CdmEntityContainer="Baby_BEntities">
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="Baby_BModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+                <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="ApartmentNumber" ColumnName="ApartmentNumber" />
+                <ScalarProperty Name="HomeNumber" ColumnName="HomeNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="Baby_BModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+                <ScalarProperty Name="NameCategory" ColumnName="NameCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChildrenArchive">
+            <EntityTypeMapping TypeName="Baby_BModel.ChildrenArchive">
+              <MappingFragment StoreEntitySet="ChildrenArchive">
+                <ScalarProperty Name="ChildCode" ColumnName="ChildCode" />
+                <ScalarProperty Name="IdMothre" ColumnName="IdMothre" />
+                <ScalarProperty Name="IdFather" ColumnName="IdFather" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="DateBorn" ColumnName="DateBorn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChildrenFamily">
+            <EntityTypeMapping TypeName="Baby_BModel.ChildrenFamily">
+              <MappingFragment StoreEntitySet="ChildrenFamily">
+                <ScalarProperty Name="ChildCode" ColumnName="ChildCode" />
+                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="BirthdayDate" ColumnName="BirthdayDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DefaultTemplates">
+            <EntityTypeMapping TypeName="Baby_BModel.DefaultTemplates">
+              <MappingFragment StoreEntitySet="DefaultTemplates">
+                <ScalarProperty Name="IdTemplates" ColumnName="IdTemplates" />
+                <ScalarProperty Name="NameTemplates" ColumnName="NameTemplates" />
+                <ScalarProperty Name="StringSolution" ColumnName="StringSolution" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Keywords">
+            <EntityTypeMapping TypeName="Baby_BModel.Keywords">
+              <MappingFragment StoreEntitySet="Keywords">
+                <ScalarProperty Name="IdKeywords" ColumnName="IdKeywords" />
+                <ScalarProperty Name="NameKeywords" ColumnName="NameKeywords" />
+                <ScalarProperty Name="PossibleContent" ColumnName="PossibleContent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OldOrders">
+            <EntityTypeMapping TypeName="Baby_BModel.OldOrders">
+              <MappingFragment StoreEntitySet="OldOrders">
+                <ScalarProperty Name="PurchaseNumber" ColumnName="PurchaseNumber" />
+                <ScalarProperty Name="IdShoppingCart" ColumnName="IdShoppingCart" />
+                <ScalarProperty Name="TotalPeace" ColumnName="TotalPeace" />
+                <ScalarProperty Name="DateOfAcquisition" ColumnName="DateOfAcquisition" />
+                <ScalarProperty Name="DateOfReceipt" ColumnName="DateOfReceipt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OldOrdersArchive">
+            <EntityTypeMapping TypeName="Baby_BModel.OldOrdersArchive">
+              <MappingFragment StoreEntitySet="OldOrdersArchive">
+                <ScalarProperty Name="PurchaseNumber" ColumnName="PurchaseNumber" />
+                <ScalarProperty Name="IdShoppingCart" ColumnName="IdShoppingCart" />
+                <ScalarProperty Name="TotalPeace" ColumnName="TotalPeace" />
+                <ScalarProperty Name="DateOfAcquisition" ColumnName="DateOfAcquisition" />
+                <ScalarProperty Name="DateOfReceipt" ColumnName="DateOfReceipt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdersProducts">
+            <EntityTypeMapping TypeName="Baby_BModel.OrdersProducts">
+              <MappingFragment StoreEntitySet="OrdersProducts">
+                <ScalarProperty Name="IdShoppingCart" ColumnName="IdShoppingCart" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Subcategory" ColumnName="Subcategory" />
+                <ScalarProperty Name="DescriptionProduct" ColumnName="DescriptionProduct" />
+                <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="ImageOfProduct" ColumnName="ImageOfProduct" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="size" ColumnName="size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductImage">
+            <EntityTypeMapping TypeName="Baby_BModel.ProductImage">
+              <MappingFragment StoreEntitySet="ProductImage">
+                <ScalarProperty Name="IdProductImage" ColumnName="IdProductImage" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="PathImage" ColumnName="PathImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="Baby_BModel.Products">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+                <ScalarProperty Name="BarcodeProduct" ColumnName="BarcodeProduct" />
+                <ScalarProperty Name="IdSubcategory" ColumnName="IdSubcategory" />
+                <ScalarProperty Name="DescriptionProduct" ColumnName="DescriptionProduct" />
+                <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="size" ColumnName="size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShoppingCart">
+            <EntityTypeMapping TypeName="Baby_BModel.ShoppingCart">
+              <MappingFragment StoreEntitySet="ShoppingCart">
+                <ScalarProperty Name="IdShoppingCart" ColumnName="IdShoppingCart" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Subcategory" ColumnName="Subcategory" />
+                <ScalarProperty Name="AmountOfPurchases" ColumnName="AmountOfPurchases" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategory">
+            <EntityTypeMapping TypeName="Baby_BModel.SubCategory">
+              <MappingFragment StoreEntitySet="SubCategory">
+                <ScalarProperty Name="IdSubCategory" ColumnName="IdSubCategory" />
+                <ScalarProperty Name="NameSubCategory" ColumnName="NameSubCategory" />
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubscriptionArchive">
+            <EntityTypeMapping TypeName="Baby_BModel.SubscriptionArchive">
+              <MappingFragment StoreEntitySet="SubscriptionArchive">
+                <ScalarProperty Name="IdFamily" ColumnName="IdFamily" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="ParetntsfirstName" ColumnName="ParetntsfirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="GetPostMail" ColumnName="GetPostMail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Baby_BModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Baby_BModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+                <ScalarProperty Name="FirstNameUser" ColumnName="FirstNameUser" />
+                <ScalarProperty Name="LastNameUser" ColumnName="LastNameUser" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="GetPostMail" ColumnName="GetPostMail" />
+                <ScalarProperty Name="TotalPayments" ColumnName="TotalPayments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountArchive">
+            <EntityTypeMapping TypeName="Baby_BModel.AccountArchive">
+              <MappingFragment StoreEntitySet="AccountArchive">
+                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+                <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="ApartmentNumber" ColumnName="ApartmentNumber" />
+                <ScalarProperty Name="HomeNumber" ColumnName="HomeNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersArchive">
+            <EntityTypeMapping TypeName="Baby_BModel.UsersArchive">
+              <MappingFragment StoreEntitySet="UsersArchive">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+                <ScalarProperty Name="FirstNameUser" ColumnName="FirstNameUser" />
+                <ScalarProperty Name="LastNameUser" ColumnName="LastNameUser" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="GetPostMail" ColumnName="GetPostMail" />
+                <ScalarProperty Name="TotalPayments" ColumnName="TotalPayments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

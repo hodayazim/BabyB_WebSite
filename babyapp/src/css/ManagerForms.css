@@ -1,0 +1,221 @@
+li {
+  padding: 2pc;
+}
+
+.ListbtnForm {
+  display: flex;
+  /* color: #c74c64; */
+  color: #b1354e;
+  font-size: 1.2pc;
+  font-weight: 600;
+  justify-content: center;
+  padding-inline-start: 0;
+}
+
+.DesktopIcon {
+  top: 10em;
+  margin-right: 25em;
+  width: 5em;
+  position: fixed;
+  height: 5em;
+  color: #b1354e;
+}
+
+.DesktopIcon:hover,
+.ListbtnForm:hover {
+  color: #ec4b6bbd;
+}
+
+::marker {
+  content: none;
+}
+
+div.ManagerForms {
+  display: flex;
+  justify-content: center;
+}
+
+.backgroundGradient {
+  height: 474px;
+  width: 614px;
+  margin-left: 23px;
+  border-radius: 2em;
+  box-shadow: 10px 10px 22px #b6b3b3;
+  background-image: linear-gradient(to bottom right, #ff8f75, #b83258);
+}
+/* form.AddProductForm {
+  display: flex;
+} */
+
+.FormContent {
+  width: 600px;
+  /*width: 800px;*/
+  padding-top: 1em;
+  border-radius: 2em;
+  margin-right: 7px;
+  margin-top: 7px;
+  background-color: white;
+  /* border: 0.2vmin solid #666666; */
+  /* box-shadow: 10px 10px 22px #b6b3b3; */
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #fb8985;
+  outline: 0;
+  /* box-shadow: 0 0 0 0.2rem #fb89857 */
+  box-shadow: 0 0 0 0.2rem #dc616785;
+}
+
+input.input,
+select.input,
+textarea.input {
+  width: 15em;
+  /* align-content: inherit; */
+  border: 0.2vmin solid #7d6c6c;
+}
+
+textarea {
+  width: 15em;
+  /* direction: ltr; */
+  max-width: 110px;
+  border-radius: 0.3em;
+}
+
+select {
+  text-transform: none;
+  width: 15em;
+  border-radius: 0.3em;
+  border: 0.2vmin solid #666666;
+}
+
+/*--------*/
+p {
+  margin: 20px 0;
+  position: relative;
+  display: inline-block;
+}
+
+label {
+  right: 2.3em;
+  font-size: 18px;
+  padding: 4px;
+  pointer-events: none;
+  position: absolute;
+  /* left: 180px;*/
+  top: 8px;
+  transition: 0.36s;
+  transition-timing-function: ease;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  opacity: 0.5;
+  background: none;
+}
+input,
+select {
+  padding: 10px;
+}
+
+input:focus + label,
+select:focus + label,
+textarea:focus + label,
+/* input[type="file"] + label, */
+input:not(:placeholder-shown) + label,
+select:not(:placeholder-shown) + label,
+textarea:not(:placeholder-shown) + label {
+  opacity: 1;
+  background: #fff;
+  transform: scale(0.7) translateY(-70%) translateX(-14px);
+  /* transform: scale(0.75) translateY(-75%) translateX(-14px); */
+}
+
+.aaa {
+  background-color: lightcoral;
+}
+
+#target {
+  width: 30px;
+  height: 30px;
+}
+
+.addbtn {
+  width: 90%;
+  border-color: #000000;
+  margin-top: 3em;
+}
+
+button.btn-outline-danger:hover {
+  color: #fff;
+  background-color: #b83258;
+  /* background-image: linear-gradient(to bottom right, #ff8f75, #b83258); */
+  border-image: linear-gradient(to top left, #ff8f75, #b83258);
+}
+
+div.btn-col {
+  top: 1em;
+}
+
+button.btn-block {
+  width: 93%;
+}
+
+.marginRig {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+input[type="button"].btn-block,
+input[type="reset"].btn-block,
+input[type="submit"].btn-block {
+  width: 85%;
+}
+
+/*delete Product*/
+p.explain {
+  text-align: start;
+  font-size: 0.98rem;
+  position: absolute;
+  width: 18em;
+  overflow: hidden;
+  right: 2em;
+}
+/* auto complete*/
+.MuiInputBase-fullWidth {
+  width: 90%;
+  margin-right: 1em;
+  max-width: 30em;
+  align-self: center;
+}
+
+.MuiOutlinedInput-root {
+  border: 0;
+}
+
+.MuiOutlinedInput-root:hover {
+  border: 0;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.MuiInputBase-fullWidth,
+.MuiInputBase-input,
+.MuiAutocomplete-inputFocused,
+.TextField,
+.Autocomplete {
+  direction: rtl;
+}
+
+/*other form*/
+
+div.col {
+  justify-items: center;
+}
+
+.aoutocompleteForm {
+  max-width: 14em;
+  align-self: center;
+}
+
+select.selectOption {
+  margin-right: 0.8em;
+  max-width: 12em;
+}

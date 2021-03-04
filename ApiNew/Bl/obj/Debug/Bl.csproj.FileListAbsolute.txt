@@ -1,0 +1,14 @@
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Bl\bin\Debug\Bl.dll
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Bl\bin\Debug\Bl.pdb
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Bl\bin\Debug\Dal.dll
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Bl\bin\Debug\Dto.dll
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Bl\bin\Debug\EntityFramework.dll
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Bl\bin\Debug\Dal.pdb
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Bl\bin\Debug\Dal.dll.config
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Bl\bin\Debug\Dto.pdb
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Bl\bin\Debug\EntityFramework.xml
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Bl\obj\Debug\Bl.csprojAssemblyReference.cache
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Bl\obj\Debug\Bl.csproj.CoreCompileInputs.cache
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Bl\obj\Debug\Bl.csproj.CopyComplete
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Bl\obj\Debug\Bl.dll
+C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Bl\obj\Debug\Bl.pdb

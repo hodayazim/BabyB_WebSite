@@ -1,0 +1,307 @@
+/* .loginUp {
+   display: grid; 
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px; 
+} */
+
+.Login {
+  height: 470px;
+  width: 275px;
+  padding: 5px;
+  border-radius: 2em;
+  grid-area: 2 / 4 / 11 / 6;
+  box-shadow: 10px 10px 22px #cac5c5;
+  background-image: linear-gradient(130deg, #fb8985, #b33253);
+}
+
+.signup {
+  height: 470px;
+  width: 275px;
+
+  padding: 5px;
+  border-radius: 2em;
+  grid-area: 2 / 7 / 11 / 9;
+  box-shadow: 10px 10px 22px #cac5c5;
+  background-image: linear-gradient(40deg, #b33253, #fb8985);
+}
+
+input {
+  width: -webkit-fill-available;
+}
+
+.input {
+  margin-top: 0.7em;
+  margin-bottom: 0.5em;
+  max-width: 270px;
+  border: 1px solid white;
+}
+
+.input:focus,
+textarea :focus {
+  border: 0.2vmin solid #fb8985;
+}
+
+textarea :focus {
+  outline: 0 none;
+}
+
+.SubmiSignup {
+  color: black;
+  width: 100px;
+  font-size: 20px;
+  margin-top: 55px;
+  border-radius: 0.3em;
+  -webkit-text-stroke: thin;
+  /* background-color: white; */
+}
+
+/*Checkbox Styel*/
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  margin-top: 50px;
+  margin-top: 3.5em;
+
+  /* margin-left: 20px; */
+  /* margin-right: 20px; */
+}
+
+.login-row {
+  justify-content: center;
+}
+
+.login-col {
+  margin: 2em;
+}
+
+.checkbox {
+  width: 100%;
+  margin: 15px auto;
+  position: relative;
+  display: block;
+}
+
+.checkbox input[type="checkbox"] {
+  width: auto;
+  opacity: 0.00000001;
+  position: absolute;
+  left: 0;
+  margin-left: -20px;
+}
+.checkbox label {
+  position: relative;
+}
+.checkbox label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 4px;
+  width: 22px;
+  height: 22px;
+  transition: transform 0.28s ease;
+  border-radius: 3px;
+  border: 2px solid #7bbe72;
+}
+.checkbox label:after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 5px;
+  border-bottom: 2px solid #7bbe72;
+  border-left: 2px solid #7bbe72;
+  -webkit-transform: rotate(-45deg) scale(0);
+  transform: rotate(-45deg) scale(0);
+  transition: transform ease 0.25s;
+  will-change: transform;
+  position: absolute;
+  top: 12px;
+  left: 10px;
+}
+.checkbox input[type="checkbox"]:checked ~ label::before {
+  color: #7bbe72;
+}
+
+.checkbox input[type="checkbox"]:checked ~ label::after {
+  -webkit-transform: rotate(-45deg) scale(1);
+  transform: rotate(-45deg) scale(1);
+}
+
+.checkbox label {
+  min-height: 34px;
+  display: block;
+  padding-left: 40px;
+  margin-bottom: 0;
+  font-weight: normal;
+  cursor: pointer;
+  /* vertical-align: sub; */
+}
+.checkbox label span {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.checkbox input[type="checkbox"]:focus + label::before {
+  outline: 0;
+}
+/*
+.checkbox input[type="checkbox"] {
+  position: absolute;
+  left: 0;
+  margin-left: -20px;
+}
+.checkbox label {
+  position: relative;
+}
+.checkbox label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 4px;
+  width: 22px;
+  height: 22px;
+  transition: transform 0.28s ease;
+  border-radius: 3px;
+  border: 2px solid #7bbe72;
+}
+.checkbox label:after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 5px;
+  border-bottom: 2px solid #7bbe72;
+  border-left: 2px solid #7bbe72;
+  -webkit-transform: rotate(-45deg) scale(0);
+  transform: rotate(-45deg) scale(0);
+  transition: transform ease 0.25s;
+  will-change: transform;
+  position: absolute;
+  top: 12px;
+  left: 10px;
+}
+.checkbox input[type="checkbox"]:checked ~ label::before {
+  color: #7bbe72;
+}
+
+.checkbox input[type="checkbox"]:checked ~ label::after {
+  -webkit-transform: rotate(-45deg) scale(1);
+  transform: rotate(-45deg) scale(1);
+}
+
+.checkbox label {
+  min-height: 34px;
+  display: block;
+  padding-left: 40px;
+  margin-bottom: 0;
+  font-weight: normal;
+  cursor: pointer;
+  /* vertical-align: sub; */ /*
+}
+.checkbox label span {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+*/
+
+.swal2-icon.swal2-success {
+  border-color: lightcoral;
+}
+
+.left {
+  display: block;
+  position: absolute;
+  right: -50px;
+  bottom: 50px;
+  width: 45vh;
+  height: 45vh;
+  border-radius: 60%;
+  background: linear-gradient(90deg, #ff8f75, #b83258);
+  z-index: 5;
+}
+
+/*-----------------*/
+.container {
+  margin-top: 10em;
+}
+
+/**********************************************************************************************/
+.login-container {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.login-form-1 {
+  padding: 5%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-1 h3 {
+  text-align: center;
+  color: #333;
+}
+.login-form-2 {
+  padding: 5%;
+  background: #ffffff;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-2 h3 {
+  text-align: center;
+  color: #fff;
+}
+.login-container form {
+  padding: 10%;
+}
+
+.col-md-4 {
+  border-radius: 5em;
+}
+
+.btnSubmit {
+  width: 50%;
+  border-radius: 1rem;
+  padding: 1.5%;
+  border: none;
+  cursor: pointer;
+}
+.login-form-1 .btnSubmit {
+  font-weight: 600;
+  color: #fff;
+  background-color: #fff;
+}
+.login-form-2 .btnSubmit {
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #fff;
+}
+.login-form-2 .ForgetPwd {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.login-form-1 .ForgetPwd {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-primary:hover,
+.btn-primary.focus,
+.btn-primary:focus.btn-primary:hover,
+.btn-primary:focus.btn-primary.focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus {
+  color: #fff;
+  border-color: #ffffff;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 0.2rem rgb(0 0 0 / 0%);
+}
+
+div.login-form-2,
+div.login-form-1 {
+  background-image: linear-gradient(130deg, #fb8985, #b33253);
+}

@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.34b13475.chunk.css",
+    "main.js": "/static/js/main.e727a74c.chunk.js",
+    "main.js.map": "/static/js/main.e727a74c.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c5ae0e80.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c5ae0e80.js.map",
+    "static/css/2.0c14234b.chunk.css": "/static/css/2.0c14234b.chunk.css",
+    "static/js/2.111f0e4e.chunk.js": "/static/js/2.111f0e4e.chunk.js",
+    "static/js/2.111f0e4e.chunk.js.map": "/static/js/2.111f0e4e.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.0c14234b.chunk.css.map": "/static/css/2.0c14234b.chunk.css.map",
+    "static/css/main.34b13475.chunk.css.map": "/static/css/main.34b13475.chunk.css.map",
+    "static/js/2.111f0e4e.chunk.js.LICENSE.txt": "/static/js/2.111f0e4e.chunk.js.LICENSE.txt",
+    "static/media/Baby_carriage.e413907d.jpg": "/static/media/Baby_carriage.e413907d.jpg",
+    "static/media/PinkLogo.c6302b57.svg": "/static/media/PinkLogo.c6302b57.svg",
+    "static/media/Header&Footer.css": "/static/media/VarelaRound-Regular.3b7ffe17.ttf",
+    "static/media/baby_booster.55837ef6.jpg": "/static/media/baby_booster.55837ef6.jpg",
+    "static/media/fooding_2.f039926c.jpg": "/static/media/fooding_2.f039926c.jpg",
+    "static/media/hand.67b8256d.png": "/static/media/hand.67b8256d.png",
+    "static/media/instegram.289ef352.png": "/static/media/instegram.289ef352.png",
+    "static/media/unnamed.15b46b60.png": "/static/media/unnamed.15b46b60.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c5ae0e80.js",
+    "static/css/2.0c14234b.chunk.css",
+    "static/js/2.111f0e4e.chunk.js",
+    "static/css/main.34b13475.chunk.css",
+    "static/js/main.e727a74c.chunk.js"
+  ]
+}
