@@ -29,6 +29,8 @@ namespace Dto.Convert
                 {
                     Images = GetImagesByIdProduct(item.IdProduct),
                     NameProduct = item.NameProduct,
+                    Price=item.Price,
+                    Color=item.Color,
                     IdProduct = item.IdProduct,
                     IdSubcategory = item.IdSubcategory,
                     UnitsInStock = item.UnitsInStock,
@@ -65,7 +67,7 @@ namespace Dto.Convert
                     DescriptionProduct = item.DescriptionProduct,
                     Color = item.Color,
                     Company = item.Company,
-                    //Price=item.Price,
+                    Price=item.Price,
                     size = item.size,
                 };
 
@@ -98,7 +100,7 @@ namespace Dto.Convert
                 DescriptionProduct = item.DescriptionProduct,
                 Color = item.Color,
                 Company = item.Company,
-                //Price=item.Price,
+                Price=item.Price,
                 size = item.size,
             };
             return ProductDto;

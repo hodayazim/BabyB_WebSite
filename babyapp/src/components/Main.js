@@ -7,6 +7,7 @@ import "antd/dist/antd.css";
 import "../css/Main.css";
 import Products from "./Product";
 import Carousel from "./carousel";
+import Carousell from "./carousell";
 import hand from "../Pictures/hand.png";
 import track from "../Pictures/track.png";
 //import ShoppingCart from "./shoppingCart";
@@ -23,7 +24,6 @@ function Main() {
   const [ListProducts, setListProducts] = useState([]);
   const [NameProduct, setNameProduct] = useState("");
   function LoadProductByCategory(id) {
-    debugger;
     sessionStorage.setItem("IdCategory", 2);
     // GetAllProducts().then((res) => {
     GetProductsByStr(id.target.defaultValue).then((res) => {
@@ -39,14 +39,53 @@ function Main() {
         <button className="btn btn-1 btn-1a" value="Button" />
       </Link> */}
       <article className="conteiner_imgCategory">
-        <img className="imgCategory" src={baby_booster} />
+        <figure class="figure">
+          <img className="imgCategory" src={baby_booster} />
+          <figcaption class="figure-caption text-right">
+            <input
+              type="submit"
+              onClick={(e) => {
+                LoadProductByCategory(e);
+              }}
+              className="btm_img booster_button"
+              value="בטיחות בבית וברכב"
+            />
+          </figcaption>
+        </figure>
+        <figure class="figure">
+          <img className="imgCategory" src={fooding_2} />
+          <figcaption class="figure-caption text-right">
+            <input
+              type="submit"
+              onClick={(e) => {
+                LoadProductByCategory(e);
+              }}
+              className="btm_img fooding_button"
+              value="האכלה והנקה"
+            />
+          </figcaption>
+        </figure>
+        <figure class="figure">
+          <img className="imgCategory" src={Baby_carriage} />
+          <figcaption class="figure-caption text-right">
+            <input
+              type="submit"
+              onClick={(e) => {
+                LoadProductByCategory(e);
+              }}
+              className="btm_img carriage_button"
+              value="עגלות"
+            />
+          </figcaption>
+        </figure>
+        {/* <img className="imgCategory" src={baby_booster} />
         <input
           type="submit"
           onClick={(e) => {
             LoadProductByCategory(e);
           }}
           className="btm_img booster_button"
-          value="כסאות בטיחות"
+          value="בטיחות בבית וברכב"
         />
         <img className="imgCategory" src={fooding_2} />
         <input
@@ -55,7 +94,7 @@ function Main() {
             LoadProductByCategory(e);
           }}
           className="btm_img fooding_button"
-          value="מוצרי האכלה"
+          value="האכלה והנקה"
         />
         <img className="imgCategory" src={Baby_carriage} />
         <input
@@ -65,7 +104,7 @@ function Main() {
           }}
           className="btm_img carriage_button"
           value="עגלות"
-        />
+        /> */}
       </article>
 
       <article className="about">
@@ -111,7 +150,13 @@ function Main() {
           </tbody>
         </table>
       </article>
+      <article className="CompenyCarousel"  >
+        <h2 className="title"> מוצרים נבחרים </h2>
+
+        <Carousell />
+      </article>
       <article className="CompenyCarousel">
+        <h2 className="title"> החברות המובילות </h2>
         <Carousel />
       </article>
     </Router>

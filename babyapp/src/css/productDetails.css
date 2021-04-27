@@ -4,15 +4,19 @@
 }
 
 .cardProduct {
-  width: 80em;
-  position: absolute;
-  background: white;
-  margin: 7em auto;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  width: 80em;
+  padding: 0.7em;
+  min-width: 60em;
+  flex: 0 0 auto;
+  margin: 5em auto;
+  background: white;
   transition: all 0.3s;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  /*change*/
+  /* position: absolute; */
+  /* transform: translate(-50%, -50%); */
 }
 
 .cardProduct:hover {
@@ -56,13 +60,16 @@ svg.arrow {
 }
 
 .imgProduct {
-  max-height: 240px;
+  max-height: 25em;
 }
 
 .description {
   padding: 30px;
   float: left;
-  width: 55%;
+  width: 50%;
+  height: 30em;
+  overflow: auto;
+  text-align: center;
   border-right: 2px solid #efefef;
 }
 
@@ -76,10 +83,10 @@ svg.arrow {
 }
 
 .description > h2 {
-  color: #515151;
   margin: 0;
-  text-transform: uppercase;
   font-weight: 500;
+  color: #515151;
+  text-transform: uppercase;
 }
 
 .description > h4 {
@@ -91,31 +98,40 @@ svg.arrow {
 }
 
 .description > p {
-  font-size: 12px;
-  line-height: 20px;
-  color: #727272;
-  padding: 20px 0;
   margin: 0;
+  width: 30em;
+  font-size: 14px;
+  padding: 20px 0;
+  overflow: hidden;
+  min-height: 10em;
+  color: #727272;
+  line-height: 20px;
+  text-align: right;
+  /* max-height: 17em; */
 }
 
 .description > button {
-  outline: 0;
   border: 0;
-  background: none;
-  border: 1px solid #d9d9d9;
-  padding: 8px 0px;
-  margin-bottom: 30px;
-  color: #515151;
-  text-transform: uppercase;
+  outline: 0;
   width: 125px;
-  font-family: inherit;
-  margin-right: 5px;
-  transition: all 0.3s ease;
+  background: none;
+  padding: 8px 0px;
   font-weight: 500;
+  color: #515151;
+  margin-right: 5px;
+  margin-bottom: 30px;
+  font-family: inherit;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: 1px solid #d9d9d9;
 }
 
 .description > button:hover {
-  border: 1px solid #aedaa6;
-  color: #aedaa6;
+  color: #dd8094;
   cursor: pointer;
+  border: 1px solid #dd8094;
+}
+
+button.btn-outline-danger {
+  margin-top: 1.4em;
 }

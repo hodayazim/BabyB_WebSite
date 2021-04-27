@@ -14,6 +14,7 @@ import Products from "./components/Product";
 import MyHeader from "./components/MyHeader";
 import Loginup from "./components/login_up.js";
 import AddProduct from "./components/addProduct";
+import ErrorNetwork from "./components/errNetwork";
 import ShoppingCart from "./components/shoppingCart";
 import ManagerForms from "./components/ManagerForms.js";
 import ProductDetails from "./components/productDetails";
@@ -60,7 +61,7 @@ import { AiOutlineUpCircle } from "react-icons/ai";
 function App() {
   return (
     <div className="App">
-      <span id="top"></span>
+      {/* <span id="top"></span> */}
       <MyHeader />
       <div className="bodyApp">
         <Router>
@@ -68,29 +69,30 @@ function App() {
             <Route exact path="/">
               <Main />
             </Route>
-            <Route path="/shoppingCart">
+            <Route path="/shoppingCart/">
               <ShoppingCart />
             </Route>
             <Route path="/Loginup">
               <Loginup />
             </Route>
-            {/* <Route path="/Main">
-              <Main />
-            </Route> */}
 
-            <Route path="/ManagerForms/addProduct">
+            <Route exact path="/404">
+              <ErrorNetwork />
+            </Route>
+
+            <Route path="/ManagerForms/addProduct/">
               <AddProduct />
             </Route>
-            <Route path="/ManagerForms/DeleteProduct">
+            <Route path="/ManagerForms/DeleteProduct/">
               <AddProduct />
             </Route>
-            <Route path="/ManagerForms">
+            <Route path="/ManagerForms/">
               <ManagerForms />
             </Route>
-            <Route path="/Products">
+            <Route path="/Products/">
               <Products />
             </Route>
-            <Route path="/ProductDetails">
+            <Route path="/ProductDetails/">
               <ProductDetails />
             </Route>
             <Route path="*" component={Error} />

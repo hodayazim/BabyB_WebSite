@@ -8,13 +8,15 @@ import { Alert } from "antd";
 const baseURL = "http://localhost:17374/api/";
 
 export const GetImagesProduct = (IdProduct) => {
-  axios
+return  axios
     .get(`${baseURL}ProductImage/GetImagesProduct/${IdProduct}`)
     .then((res) => {
       console.log(res);
-      return res.data;
+      localStorage.setItem("ImagesProduct", JSON.stringify(res.data));
+      debugger;
     })
     .catch(function (error) {
       console.log(error);
+      return;
     });
 };

@@ -6,7 +6,6 @@ import product from "./Product";
 import { GetSearchProducts } from "../FUNCTION/ProductFunction";
 
 function Search() {
-  debugger;
   let history = useHistory();
   const [ListProducts, setListProducts] = useState([]);
   const [NameProduct, setNameProduct] = useState("");
@@ -15,7 +14,7 @@ function Search() {
     if (event.keyCode == 13) {
       console.log(event.target.value);
       event.preventDefault();
-      alert(event.target.value);
+      // alert(event.target.value);
       GetSearchProducts(event.target.value).then((res) => {
         console.log(res);
         history.push("/Products", { data: res });

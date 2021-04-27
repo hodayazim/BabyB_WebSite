@@ -1,7 +1,6 @@
 import React from "react";
 import "../css/login.css";
 import "../css/round.css";
-import { useHistory } from "react-router";
 import { withRouter } from "react-router-dom";
 import { Label, Checkbox } from "@rebass/forms";
 import checkLogin from "../FUNCTION/AppFunction";
@@ -86,27 +85,28 @@ class Loginup extends React.Component {
   /* הפונקציה עובדת */
   newUserHadler = (event) => {
     var scope = this;
+    //     {
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // }
     axios
       .post(`http://localhost:17374/api/Users/Register`, this.state)
-      // , {
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // }
       .then(function (response) {
         console.log(response);
         if (response.data == -1) {
           swal({
             icon: "error",
-            title: "מייל זה קיים במערכת",
-            text: " BabyB ברוכים הבאים לאתר",
+            title: "אירעה שגיאה",
+            text: "מייל זה קיים במערכת, אנא נסה להכניס מייל אחר",
             type: "error",
           });
         } else if (response.data == 0) {
           swal({
             icon: "warning",
-            title: "אחד או יותר מהשדות לא נכונים",
-            text: " BabyB ברוכים הבאים לאתר",
+            title: "ההרשמה לא בוצעה",
+            text: "אחד או יותר מהשדות לא נכונים",
+            allowOutsideClick: true,
             type: "warning",
           });
         } else {
@@ -115,6 +115,7 @@ class Loginup extends React.Component {
             title: "נרשמת בהצלחה",
             text: " BabyB ברוכים הבאים לאתר",
             type: "success",
+            timer: 1500,
           }).then((result) => {
             console.log(result);
             localStorage.setItem("IdUser", response.data);
@@ -229,9 +230,9 @@ class Loginup extends React.Component {
     const { UserPassword, UserwPassword } = this.state;
     // perform all neccassary validations
     if (UserPassword !== UserwPassword) {
-      alert("Passwords don't match");
+      // alert("Passwords don't match");
     } else {
-      alert("good password"); // make API call
+      // alert("good password"); // make API call
       this.newUserHadler(event);
     }
   };
@@ -242,9 +243,9 @@ class Loginup extends React.Component {
     });
   };
 
-    changeFirstName = (e) => {
-      this.setState({ FirstNameUser: e.target.value });
-    };
+  changeFirstName = (e) => {
+    this.setState({ FirstNameUser: e.target.value });
+  };
 
   changeLastName = (e) => {
     this.setState({ LastNameUser: e.target.value });
@@ -292,7 +293,7 @@ class Loginup extends React.Component {
                   <input
                     type="text"
                     id="Firstname"
-                    placeholde="שם פרטי"
+                    placeholder="שם פרטי"
                     className="form-control"
                     value={this.state.FirstName}
                     onChange={this.changeFirstName}
@@ -303,7 +304,7 @@ class Loginup extends React.Component {
                   <input
                     type="text"
                     id="Lastname"
-                    placeholde="שם משפחה"
+                    placeholder="שם משפחה"
                     className="form-control"
                     value={this.state.lastName}
                     onChange={this.changeLastName}
@@ -311,9 +312,9 @@ class Loginup extends React.Component {
                 </div>
                 <div class="form-group">
                   <input
-                    type="mail"
+                    type="email"
                     id="email"
-                    placeholde="הכנס כתובת מייל"
+                    placeholder="הכנס כתובת מייל"
                     className="form-control"
                     value={this.state.email}
                     onChange={this.changeEmail}
@@ -324,7 +325,7 @@ class Loginup extends React.Component {
                   <input
                     type="password"
                     id="password"
-                    placeholde="הכנס סיסמה"
+                    placeholder="הכנס סיסמה"
                     className="form-control"
                     value={this.state.UserPassword}
                     onChange={this.changepassword}
@@ -335,7 +336,7 @@ class Loginup extends React.Component {
                   <input
                     type="password"
                     id="Wpassword"
-                    placeholde=">אימות סיסמה"
+                    placeholder="אימות סיסמה"
                     className="form-control"
                     value={this.state.UserwPassword}
                     onChange={this.changeWpassword}
@@ -348,14 +349,15 @@ class Loginup extends React.Component {
                   <input
                     type="button"
                     placeholder="הרשמה"
-                    className="btnSubmit"
+                    className="btnSubmit btn btn-primary mt-3"
+                    value="הרשמה"
                     onClick={(e) => {
                       this.checkPassword(e);
                     }}
                   />
                 </div>
                 <div class="form-group">
-                  <a href="#" class="ForgetPwd">
+                  <a href="#" className="ForgetPwd">
                     Forget Password?
                   </a>
                 </div>
@@ -370,15 +372,14 @@ class Loginup extends React.Component {
                   <input
                     type="email"
                     id="email"
-                    value=""
+                    placeholder="הכנס כתובת מייל"
                     className="form-control"
-                    placeholder="הכנס כתובת מייל של החשבון"
+                    value={this.Email || ""}
                     onChange={this.changeEmail}
                     required
                   />
                 </div>
                 <div class="form-group">
-                  <label>הכנס סיסמה</label>
                   <input
                     type="password"
                     id="password"
@@ -394,7 +395,7 @@ class Loginup extends React.Component {
                    */}
                   <input
                     type="button"
-                    value=""
+                    value="כניסה"
                     className="btnSubmit btn btn-primary mt-3"
                     onClick={(e) => {
                       this.login(e);
@@ -402,7 +403,7 @@ class Loginup extends React.Component {
                   />
                 </div>
                 <div class="form-group">
-                  <a href="#" class="ForgetPwd" value="Login">
+                  <a href="#" className="ForgetPwd" value="Login">
                     Forget Password?
                   </a>
                 </div>
@@ -412,7 +413,7 @@ class Loginup extends React.Component {
         </div>
         <div className="loginUp container">
           {/*** LOG-IN*/}
-          <div className="left"></div>
+          {/* <div className="left"></div> */}
         </div>
       </>
     );

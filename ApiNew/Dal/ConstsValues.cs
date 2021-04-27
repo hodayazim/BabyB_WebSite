@@ -9,5 +9,6 @@ namespace Dal
     class ConstsValues
     {
         public static string IMAGE_PATH = "C:/Users/hoday/Desktop/final project/Image/";
+        public static string path = "C:/Users/hoday/Desktop/final project";
     }
 }

@@ -7,6 +7,7 @@ import Search from "./Search.js";
 import ShoppingCart from "./shoppingCart";
 import ManagerForms from "./ManagerForms";
 import Products from "./Product";
+import Error from "./Error";
 import "../css/search_1.css";
 import "../css/Header&Footer.css";
 import "../css/creativeLinkEffects.css";
@@ -20,30 +21,40 @@ import {
   AiOutlineShopping,
   AiOutlineHeart,
 } from "react-icons/ai";
-import { GetShoppingByIdUser } from "../FUNCTION/ShoppingCartFunction";
 import {
   GetAllCategories,
   GetProductsByStr,
+  GetListProductsById,
 } from "../FUNCTION/ProductFunction";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 
 function MyHeader() {
   let history = useHistory();
   const [cat, setcat] = useState(" ");
+  const [EmptyArr, setEmptyArr] = useState([]);
+  const [IdProducts, setIdProducts] = useState();
   const [Categories, setCategories] = useState([" "]);
+  const [CountProduct, setCountProduct] = useState(0);
   const [name, setName] = useState(localStorage.getItem("EMail"));
-  function onClickChangeColor() {
-    var someElement = document.getElementsByClassName("btnmyheaderPink");
-    someElement.className += " btnmyheaderBlue";
-    //add "newclass" to element (space in front is important)
-    // someElement.className -= "btnmyheaderPink";
-    // const [btnmyheaderPink, setToggleClass] = useState(false);
-    // $(".btnmyheaderPink").toggleClass("btnmyheaderBlue");
-    // toggleClass ? "btnmyheaderPink" : "btnmyheadeBlue";
-    // element.className.add("btnmyheaderBlue");
-    // element.className.remove("btnmyheaderPink");
-    // setcolor("blue");
-  }
+  const [EmptyArr2, setEmptyArr2] = useState([""]);
+
+  var stringTry = "?";
+  // for (let i = 0; i < array.length; i++) {
+  //   stringTry += "jj" + array[i];
+  // }
+
+  // function onClickChangeColor() {
+  //   var someElement = document.getElementsByClassName("btnmyheaderPink");
+  //   someElement.className += " btnmyheaderBlue";
+  //   //add "newclass" to element (space in front is important)
+  //   // someElement.className -= "btnmyheaderPink";
+  //   // const [btnmyheaderPink, setToggleClass] = useState(false);
+  //   // $(".btnmyheaderPink").toggleClass("btnmyheaderBlue");
+  //   // toggleClass ? "btnmyheaderPink" : "btnmyheadeBlue";
+  //   // element.className.add("btnmyheaderBlue");
+  //   // element.className.remove("btnmyheaderPink");
+  //   // setcolor("blue");
+  // }
 
   useEffect(() => {
     GetAllCategories()
@@ -56,9 +67,14 @@ function MyHeader() {
         }
         setcat(res[0].NameCategory);
         console.log({ Categories });
+        // history.push("/");
+        // window.location.reload();
+        // window.preventDefault();
       })
       .catch((err) => {
-        console.log("this was error");
+        history.push("/404");
+        // window.location.reload();
+        // window.preventDefault();
         //   setcat({
         //     name: 'Sam',
         //     email: 'somewhere@gmail.com'
@@ -67,11 +83,14 @@ function MyHeader() {
   });
 
   useEffect(() => {
-    if (localStorage.length == 0) localStorage.setItem("FirstNameUser", "אורח");
+    if (
+      localStorage.FirstNameUser == null ||
+      localStorage.FirstNameUser.length == 0
+    )
+      localStorage.setItem("FirstNameUser", "אורח");
   });
 
   function LoadProductsByCategory(str) {
-    debugger;
     GetProductsByStr(str.target).then((res) => {
       console.log(res);
       history.push("/Products", { data: res });
@@ -81,11 +100,35 @@ function MyHeader() {
 
   function LoadShoppingCart() {
     debugger;
-    GetShoppingByIdUser()
+    axios
+      .get(
+        `http://localhost:17374/api/ShoppingCart/GetShoppingByIdUser/${localStorage.getItem(
+          "IdUser"
+        )}`
+      )
       .then((res) => {
-        console.log("GetShoppingByIdUser come back!");
-        history.push("/ShoppingCart", { data: res });
+        setEmptyArr([]);
+        const AllProduct = EmptyArr;
+        const arr = res.data;
+        arr.forEach((item) => {
+          // AllProduct.push(item.IdProduct);
+          //?IdProducts=9&IdProducts=7
+          stringTry += "IdProducts=" + item.IdProduct + "&";
+        });
+        GetListProductsById(stringTry)
+          .then((ress) => {
+            console.log(ress);
+            alert(ress);
+          })
+          .catch((r) => {
+            alert(r);
+          });
+        history.push("/ShoppingCart", {
+          data: arr,
+          // List: ListOfProducts,
+        });
         window.location.reload();
+        window.preventDefault();
       })
       .catch(function (error) {
         console.log("GetShoppingByIdUser is faild!");
@@ -94,11 +137,9 @@ function MyHeader() {
   }
 
   const handleClick = (event) => {
-    debugger;
     //event.preventDefault();
     console.log("The link was clicked.");
   };
-  debugger;
 
   return (
     <Router>
@@ -106,7 +147,8 @@ function MyHeader() {
         {/*-----Log-----*/}
         <div className="divbtnheader">
           <p className="helloUser">
-            היי {localStorage.getItem("FirstNameUser")} אנחנו שמחים לראותך!
+            שלום {localStorage.getItem("FirstNameUser")}&nbsp; אנחנו שמחים
+            לראותך ! &nbsp; &nbsp;
           </p>
           <Link to="/Loginup">
             <input
@@ -129,9 +171,10 @@ function MyHeader() {
           </Link>
         </div>
         {/*-----Logo-----*/}
-        <Link to="/" className="LogoPng" /*activeClassName="active"*/>
+
+        <a className="LogoPng" href="/#">
           <img src={PinkLogo} /*onClick={handleClick()}*/ />
-        </Link>
+        </a>
 
         <div className="Search">
           <Search />
@@ -143,7 +186,7 @@ function MyHeader() {
 
         <Link to="/ShoppingCart">
           <AiOutlineShopping
-            onClick=" "
+            // onClick=" "
             className="linkIcon c"
             onClick={() => LoadShoppingCart()}
           />
@@ -151,25 +194,6 @@ function MyHeader() {
 
         <span className="spanCategory">
           <section className="color-10">
-            {/* <nav className="cl-effect-10 navbar navbar-expand-lg">
-              <a className="navbar-brand" href="#">
-                דף הבית |
-              </a>
-              <button
-                className="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span className="navbar-toggler-icon"></span>
-              </button>
-              <div
-                className="cl-effect-10 collapse navbar-collapse"
-                id="navbarNav"
-              > */}
             <nav className="cl-effect-10 navbar navbar-expand-lg navbar-light">
               <a className="navbar-brand" href="/#">
                 <span className="G">דף הבית |</span>
@@ -205,61 +229,10 @@ function MyHeader() {
                     </li>
                   ))}
                 </ul>
-                {/* <ul className="navbar-nav">
-                   <li className="nav-item active">
-                      <a
-                        className="nav-link pl-0 pr-0"
-                        href="#"
-                        data-hover={Categories[1]}
-                      >
-                        <span>{Categories[1]}</span>
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="nav-link pl-0 pr-0"
-                        href="#"
-                        data-hover={Categories[2]}
-                      >
-                        <span>{Categories[2]}</span>
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="nav-link  pl-0 pr-0"
-                        href="#"
-                        data-hover={Categories[3]}
-                      >
-                        <span>{Categories[3]}</span>
-                      </a>
-                    </li> */}
               </div>
             </nav>
           </section>
         </span>
-        {/* <span className="spanCategory">
-          <section className="color-10">
-            <nav className="cl-effect-10">
-              <a data-hover="עגלות">
-                <button>
-                  <span>עגלות</span>
-                </button>
-              </a> 
-              <a href="#" data-hover="קטגוריה">
-                <span>קטגוריה</span>
-              </a>
-              <a href="#" data-hover="קטגוריה">
-                <span>קטגוריה</span>
-              </a>
-              <a href="#" data-hover="קטגוריה">
-                <span>קטגוריה</span>
-              </a>
-              <a href="#" data-hover="קטגוריה">
-                <span>קטגוריה</span>
-              </a>
-            </nav>
-          </section>
-        </span> */}
       </div>
     </Router>
   );

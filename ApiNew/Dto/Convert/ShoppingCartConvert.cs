@@ -40,17 +40,16 @@ namespace Dto.Convert
             List<Dto.ShoppingCart> shoppingCartsDto = new List<ShoppingCart>();
             foreach (var item in shoppingCartsDal)
             {
-                Dto.ShoppingCart shoppingCartDto = new ShoppingCart
-                {
-                  IdShoppingCart = item.IdShoppingCart,
-                  IdUser = item.IdUser,
-                  IdProduct = item.IdProduct,
-                  Category = item.Category,
-                  Subcategory = item.Subcategory,
-                  AmountOfPurchases = item.AmountOfPurchases,
-                  DateAdded = item.DateAdded,
-                  DiscountPercentage = item.DiscountPercentage
-                };
+                Dto.ShoppingCart shoppingCartDto = new ShoppingCart();
+
+                shoppingCartDto.IdShoppingCart = item.IdShoppingCart;
+                shoppingCartDto.IdUser = item.IdUser;
+                shoppingCartDto.IdProduct = item.IdProduct;
+                shoppingCartDto.Category = item.Category;
+                shoppingCartDto.Subcategory = item.Subcategory;
+                shoppingCartDto.AmountOfPurchases = item.AmountOfPurchases;
+                shoppingCartDto.DateAdded = item.DateAdded;
+                shoppingCartDto.DiscountPercentage = item.DiscountPercentage;
                 //Dto.ShoppingCart shoppingCartDto = new ShoppingCart();
                 //shoppingCartDto.IdShoppingCart = item.IdShoppingCart;
                 //shoppingCartDto.IdUser = item.IdUser;
@@ -66,6 +65,8 @@ namespace Dto.Convert
                 //shoppingCartDto.ImageOfProduct = item.ImageOfProduct;
                 //shoppingCartDto.Company = item.Company;
                 //shoppingCartDto.NameProduct = item.NameProduct;
+                shoppingCartsDto.Add(shoppingCartDto);
+
             }
             return shoppingCartsDto;
         }

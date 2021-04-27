@@ -80,6 +80,7 @@ textarea {
   width: 15em;
   /* direction: ltr; */
   max-width: 110px;
+  max-height: 120px;
   border-radius: 0.3em;
 }
 
@@ -97,7 +98,7 @@ p {
   display: inline-block;
 }
 
-label {
+label.Add-form {
   right: 2.3em;
   font-size: 18px;
   padding: 4px;
@@ -119,10 +120,12 @@ select {
 input:focus + label,
 select:focus + label,
 textarea:focus + label,
+datalist:focus + label,
 /* input[type="file"] + label, */
 input:not(:placeholder-shown) + label,
 select:not(:placeholder-shown) + label,
-textarea:not(:placeholder-shown) + label {
+textarea:not(:placeholder-shown) + label,
+datalist:not(:placeholder-shown) + label {
   opacity: 1;
   background: #fff;
   transform: scale(0.7) translateY(-70%) translateX(-14px);
@@ -156,7 +159,7 @@ div.btn-col {
 }
 
 button.btn-block {
-  width: 93%;
+  width: 65%;
 }
 
 .marginRig {
@@ -178,6 +181,9 @@ p.explain {
   width: 18em;
   overflow: hidden;
   right: 2em;
+}
+.text-break {
+  max-width: 20em;
 }
 /* auto complete*/
 .MuiInputBase-fullWidth {

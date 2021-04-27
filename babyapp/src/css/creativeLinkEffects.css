@@ -54,7 +54,7 @@ nav a:focus {
 
 .G {
   display: unset !important;
-  color: black !important;
+  color: rgb(255, 255, 255) !important;
   padding: 0;
   background: #c74c6400;
 }

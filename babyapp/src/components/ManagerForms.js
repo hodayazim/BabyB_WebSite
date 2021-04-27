@@ -54,11 +54,11 @@ function ManagerForms(props) {
 
   return (
     <div>
-      <div style={colorStyle.backgroundColor} className="main">
+      {/* <div style={colorStyle.backgroundColor} className="main">
         <button className="ChangeColor" onClick={() => ChangeColor()}>
           ChangeColor
         </button>
-      </div>
+      </div> */}
       <Router>
         <div>
           <MenuForms />
@@ -148,7 +148,12 @@ function MenuForms() {
 
 export function OtherForm(data) {
   const [ListUsers, setListUsers] = useState([]);
-  const [Num, setNum] = useState([{ num: 0 }, { num: 1 }, { num: 2 }]);
+  const [Num, setNum] = useState([
+    { num: 0, Description: "מנהל" },
+    { num: 1, Description: "איש צוות" },
+    { num: 2, Description: "משתמש" },
+  ]);
+  const [UserSelect, setUserSelect] = useState();
   const [Number, setNumber] = useState(null);
 
   // useMountEffect(() => {
@@ -174,20 +179,35 @@ export function OtherForm(data) {
     });
   });
 
+  function UpDateSanction(e) {
+    alert(e);
+  }
+
   return (
     <>
       <div className="AddProductDiv ManagerForms">
         <div className="backgroundGradient">
-          <form className="AddProductForm FormContent" autoComplete="on">
+          <form
+            className="AddProductForm FormContent"
+            autoComplete="on"
+            onSubmit={(e) => UpDateSanction(e)}
+          >
             <div className="row">
               <div className="col">
                 {/* <p>{ListUsers[0].FirstNameUser}</p> */}
                 <Autocomplete
                   id="free-solo-demo"
+                  freeSolo
+                  autoSelect
                   className="aoutocompleteForm"
                   options={data.user.map(
                     (option) => option.FirstNameUser + " " + option.LastNameUser
                   )}
+                  onChange={(e) => {
+                    setUserSelect(e.target.textContent);
+                    debugger;
+                    alert(UserSelect);
+                  }}
                   renderInput={(params) => (
                     <TextField
                       {...params}
@@ -203,47 +223,33 @@ export function OtherForm(data) {
                   className="form-control input selectOption"
                   placeholder=" "
                   value={Number}
-                  onChange={(e) => setNumber(e.target.value)}
+                  onChange={(e) => {
+                    setNumber(e.target.value);
+                    debugger;
+                    alert(e.target.numid);
+                  }}
                 >
                   <option value=" " disabled selected>
                     בחר סוג הרשאה
                   </option>
                   {Num.map((val) => (
-                    <option>{val.num}</option>
+                    <option id={val.num}>
+                      {val.num} - {val.Description}
+                    </option>
                   ))}
                 </select>
               </div>
               <div className="col">
-                {" "}
-                <Autocomplete
-                  id="free-solo-demo"
-                  className="aoutocompleteForm"
-                  options={data.user.map(
-                    (option) => option.FirstNameUser + " " + option.LastNameUser
-                  )}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="freeSolo"
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  )}
-                />
-                <select
-                  type="select"
-                  className="form-control input selectOption"
-                  placeholder=" "
-                  value={Number}
-                  onChange={(e) => setNumber(e.target.value)}
+                <h1></h1>
+              </div>
+              <div className="col">
+                <button
+                  type="button"
+                  onClick={(e) => UpDateSanction(e)}
+                  className="btn btn-outline-danger btn-block"
                 >
-                  <option value=" " disabled selected>
-                    בחר סוג הרשאה
-                  </option>
-                  {Num.map((val) => (
-                    <option>{val.num}</option>
-                  ))}
-                </select>
+                  לביצוע העדכון
+                </button>
               </div>
             </div>
           </form>

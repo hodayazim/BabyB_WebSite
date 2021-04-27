@@ -45,5 +45,11 @@ namespace Bl
 
             throw new NotImplementedException();
         }
+
+        public static List<Product> GetListOfProductById(int[] idProducts)
+        {
+            List<Dal.Products> RequestedListProduct = Dal.ProductsDal.GetListOfProductById(idProducts);
+            return Dto.Convert.ProductConvert.AllProductsToDto(RequestedListProduct);
+        }
     }
 }

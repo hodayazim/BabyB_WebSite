@@ -28,21 +28,17 @@ export const GetAllProducts = () =>
 
 export const GetProductsByStr = (str) => {
   return axios
-    .get(`${baseURL}Product/GetProductsByStr/${str}`)
+    .get(`http://localhost:17374/api/Product/GetProductsByStr/${str}`)
     .then((res) => {
-      console.log("then");
       localStorage.setItem("Category", str);
-      // if (res.data.length != 0)
       return res.data;
     })
     .catch(function (error) {
-      console.log("catch");
       console.log(error);
     });
 };
 
 export const AddNewProduct = (product, images) => {
-  debugger;
   //מביאה רשימה של תת קטגוריות
   axios
     .get(`${baseURL}SubCategory/GetIdSubCategory/${product.IdSubcategory}`)
@@ -52,9 +48,9 @@ export const AddNewProduct = (product, images) => {
       product.IdSubcategory = response.data;
 
       //מוסיפה מוצר לאתר
+      // .post(`http://localhost:17374/api/Products/AddProducts`, product)
       axios
-        .post(`http://localhost:17374/api/Products/AddProducts`)
-        // .post(`http://localhost:17374/api/Products/AddProducts`, product)
+        .post(`http://localhost:17374/api/Products/AddProducts`, product)
         .then(function (response) {
           const len = images["length"];
           images[len] = response.data;
@@ -78,7 +74,15 @@ export const AddNewProduct = (product, images) => {
         .catch(function (error) {
           console.log(error);
         })
-        .then(function () {});
+        .then(function () {
+          return (
+            <Alert variant="primary">
+              This is a alert with{" "}
+              <Alert.Link href="#">an example link</Alert.Link>. Give it a click
+              if you like.
+            </Alert>
+          );
+        });
     })
 
     .catch(function (error) {
@@ -91,7 +95,6 @@ export const AddNewProduct = (product, images) => {
 };
 
 export const GetAllCategories = () => {
-  debugger;
   return axios
     .get(`http://localhost:17374/api/Category/GetAllCategories`)
     .then((res) => {
@@ -123,6 +126,7 @@ export const GetSearchProducts = (val) => {
   );
 };
 
+//שליפה של שמות המוצרים כולם
 export const GetAllProductsWithoutSearch = () => {
   debugger;
   return axios
@@ -136,18 +140,33 @@ export const GetAllProductsWithoutSearch = () => {
     });
 };
 
+//שליפת פרטי המוצר
 export const GetProductById = (id) => {
-  return (
-    axios
-      // .get(`http://localhost:17374/api/Products/GetProductById/26`)
-      .get(`http://localhost:17374/api/Products/GetProductById/${id}`)
-      .then((res) => {
-        console.log("then");
-        return res.data;
-      })
-      .catch(function (error) {
-        console.log("catch");
-        console.log(error);
-      })
-  );
+  return axios
+    .get(`http://localhost:17374/api/Products/GetProductById/${id}`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 };
+
+// שליפת רשימת המוצרים שבסל הקניות
+export const GetListProductsById = (stringId) => {
+  return axios
+    .get(`http://localhost:17374/api/Products/GetListOfProductById${stringId}`)
+    .then((res) => {
+      debugger;
+      localStorage.setItem("CartProduct", JSON.stringify(res.data));
+      // window.location.reload();
+      // window.preventDefault();
+      // return;
+    })
+    .catch(function (error) {
+      debugger;
+      console.log(error);
+    });
+};
+
+// .get(`http://localhost:17374/api/Products/GetListOfProductById/${ListId}`)

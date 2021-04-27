@@ -16,7 +16,7 @@ namespace Dto
         public short? UnitsInStock { get; set; }
         public byte? DiscountPercentage { get; set; }
         public List<string> Images { get; set; }
-        public float? Price { get; set; }
+        public decimal? Price { get; set; }
         public string Color { get; set; }
         public string Company { get; set; }
         public string size { get; set; }

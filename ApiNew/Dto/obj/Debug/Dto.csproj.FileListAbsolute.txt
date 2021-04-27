@@ -9,3 +9,14 @@ C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Dto\obj\Debug\Dto.cs
 C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Dto\obj\Debug\Dto.csproj.CopyComplete
 C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Dto\obj\Debug\Dto.dll
 C:\Users\hoday\Documents\Visual Studio 2017\Projects\ApiNew\Dto\obj\Debug\Dto.pdb
+C:\Users\hoday\Desktop\final project\ApiNew\Dto\bin\Debug\Dto.dll
+C:\Users\hoday\Desktop\final project\ApiNew\Dto\bin\Debug\Dto.pdb
+C:\Users\hoday\Desktop\final project\ApiNew\Dto\bin\Debug\Dal.dll
+C:\Users\hoday\Desktop\final project\ApiNew\Dto\bin\Debug\Dal.pdb
+C:\Users\hoday\Desktop\final project\ApiNew\Dto\bin\Debug\Dal.dll.config
+C:\Users\hoday\Desktop\final project\ApiNew\Dto\bin\Debug\EntityFramework.xml
+C:\Users\hoday\Desktop\final project\ApiNew\Dto\obj\Debug\Dto.csprojAssemblyReference.cache
+C:\Users\hoday\Desktop\final project\ApiNew\Dto\obj\Debug\Dto.csproj.CoreCompileInputs.cache
+C:\Users\hoday\Desktop\final project\ApiNew\Dto\obj\Debug\Dto.csproj.CopyComplete
+C:\Users\hoday\Desktop\final project\ApiNew\Dto\obj\Debug\Dto.dll
+C:\Users\hoday\Desktop\final project\ApiNew\Dto\obj\Debug\Dto.pdb

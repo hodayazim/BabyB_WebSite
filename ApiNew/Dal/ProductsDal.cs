@@ -49,6 +49,27 @@ namespace Dal
             return L;
         }
 
+        public static List<Products> GetListOfProductById(int[] idProducts)
+        {
+            List<int> jj = idProducts.ToList<int>();
+            List<Products> RequestedListProduct = new List<Products>();
+
+            using (Baby_BEntities db = new Baby_BEntities())
+            {
+                foreach (var item in db.Products)
+                {
+                    for (int i = 0; i < jj.Count; i++)
+                    {
+                        if (item.IdProduct == jj[i])
+                        {
+                            RequestedListProduct.Add(item);
+                        }
+                    }
+                }
+            }
+            return RequestedListProduct;
+        }
+
         public static Products GetProductById(int idProduct)
         {
             Products RequestedProduct = new Products();
@@ -100,17 +121,20 @@ namespace Dal
                     if (item.NameProduct.Contains(stringOfProduct))
                         ListOfProduct.Add(item);
                 }
-                //NamesOfProduct = db.Products.Select(n => n.NameProduct).ToList();
-                //foreach (var item in db.Products)
-                //{
-                //    for (int i = 0; i < NamesOfProduct.Count(); i++)
-                //    {
-                //        if (item.NameProduct.Contains(stringOfProduct))
-                //            ListOfProduct.Add(item);
-                //    }
-                //}
             }
             return ListOfProduct;
+
+
         }
     }
 }
+
+//NamesOfProduct = db.Products.Select(n => n.NameProduct).ToList();
+//foreach (var item in db.Products)
+//{
+//    for (int i = 0; i < NamesOfProduct.Count(); i++)
+//    {
+//        if (item.NameProduct.Contains(stringOfProduct))
+//            ListOfProduct.Add(item);
+//    }
+//}

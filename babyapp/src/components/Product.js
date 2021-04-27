@@ -10,15 +10,14 @@ function Products() {
   let history = useHistory();
   const location = useLocation();
   const params = location.state;
-
-  debugger;
+  const Category = params.data; // localStorage.Category
 
   useEffect(() => {
     var maincontent = "";
     const h1 = <h1>לא נמצאו מוצרים </h1>;
     maincontent =
       "</br></br></br></br><h1> לא נמצאו מוצרים בקטגורית </h1>" +
-      " '" +
+      "'" +
       localStorage.getItem("Category") +
       "'";
     if (params.data[0] == undefined) {
@@ -41,16 +40,18 @@ function Products() {
   // }, []);
 
   function VeiwProduct(data) {
-    debugger;
     GetProductById(data.target.id)
       .then((res) => {
         console.log(res);
-        GetImagesProduct(res.IdProduct).then((res2) => {
-          console.log(res2).catch((err2) => {
-            console.log(err2);
-          });
-        });
-        history.push("/ProductDetails", { data: res });
+        GetImagesProduct(res.IdProduct);
+        // .then((res2) => {
+        //   console.log(res2);
+        // })
+        // .catch((err2) => {
+        //   console.log(err2);
+        // });
+        const images = JSON.parse(localStorage.getItem("ImagesProduct"));
+        history.push("/ProductDetails", { data: res, image: images });
         window.location.reload();
       })
       .catch((err) => {
@@ -60,58 +61,35 @@ function Products() {
 
   return (
     <>
-      <section id="section">
-        {/* {params.data.map((d) => {
-        return (
-          <>
-            <div class="card">
-              <img src={Mios} alt="myprofilepic" />
-              ;
-              <img
-                class="card-img-top"
-                src="{d.ProductImage[0].PathImage}"
-                alt={d.NameProduct}
-              />
-              <div class="card-body ">
-                <h5 class="card-title">{d.NameProduct}</h5>
-                <p class="card-text">{d.DescriptionProduct}</p>
-              </div>
-            </div>
-             <b>Name:</b> {d.NameProduct} 
-          </>
-        );
-      })} */}
-        {/* <img src="props.img" /> */}
-
-        {/* <b>Price:</b> {props.NameProduct} */}
-      </section>
+      <section id="section"></section>
       <div className="row row-cols-1 row-cols-md-4 g-4 flex-xl-row-reverse Product">
-        {params.data.map((d) => {
+        {Category.map((p) => {
           return (
             <>
               <div className="col Product col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div className="box card">
+                <div className="box card h-100">
                   <Link
-                    to="/ProductDetails"
+                    // to="/ProductDetails"
                     className="LinkCard"
                     onClick={(e) => {
                       VeiwProduct(e);
                     }}
                   >
                     <img
-                      src={d.Images[0]}
+                      src={p.Images[0]}
                       // src={img}
                       className="card-img-top"
-                      id={d.IdProduct}
+                      id={p.IdProduct}
                       alt="..."
                     />
-                    <div className="card-body" id={d.IdProduct}>
-                      <h5 className="card-title" id={d.IdProduct}>
-                        {d.NameProduct}
+                    <div className="card-body" id={p.IdProduct}>
+                      <h5 className="card-title" id={p.IdProduct}>
+                        {p.NameProduct}
                       </h5>
-                      <p className="card-text" id={d.IdProduct}>
-                        {d.DescriptionProduct}
+                      <p className="card-text" id={p.IdProduct}>
+                        {p.DescriptionProduct}
                       </p>
+                      <p className="card-text card-price">₪ {p.Price} </p>
                     </div>
                   </Link>
                 </div>

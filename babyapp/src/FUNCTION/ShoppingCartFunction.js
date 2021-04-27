@@ -4,6 +4,25 @@ import shoppingCart from "../components/shoppingCart";
 
 const baseURL = "http://localhost:17374/api/";
 
+export const AddProductToCart = (productId) => {
+  axios
+    .post(`http://localhost:17374/api/ShoppingCart/AddProductToCart`, productId)
+    .then(function (response) {
+      return;
+    });
+};
+
+export const GetShoppingByIdUser = () => {
+  debugger;
+  axios
+    .get(
+      `${baseURL}ShoppingCart/GetShoppingByIdUser/${localStorage.getItem("IdUser")}`
+    )
+    .then(function (res) {
+      return res.data;
+    });
+};
+
 //  class User {
 //     id: int;
 //     firstName: string;
@@ -23,15 +42,6 @@ const baseURL = "http://localhost:17374/api/";
 //       // always executed
 //     });
 // }
-
-export const GetShoppingByIdUser = () => {
-  debugger;
-  return axios.get(
-    `${baseURL}ShoppingCart/GetShoppingByIdUser/${localStorage.getItem(
-      "IdUser"
-    )}`
-  );
-};
 
 // export const DeleteFunction = () => {
 //   axios

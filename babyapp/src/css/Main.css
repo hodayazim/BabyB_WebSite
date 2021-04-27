@@ -12,7 +12,9 @@ body {
 
 .imgCategory {
   width: 440px;
-  height: 595px;
+  height: 45em;
+  min-height: 30em;
+  max-height: 45em;
   margin: 10px;
   margin-top: 0;
   border-radius: 0.5em;
@@ -32,11 +34,12 @@ body {
 .title {
   color: #b83258;
   font-weight: 700;
-  font-size: 3.2em;
+  font-size: 2.8em;
 }
 
 article.conteiner_imgCategory {
   padding: 4em;
+  height: 54em;
   /* background-image: url(//www.yummyyummy.co.il/wp-content/uploads/2020/05/sliderbackground.png); */
 }
 
@@ -88,19 +91,50 @@ tr.tableIcon_tr:hover {
 }
 
 .btm_img {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
   background-color: #c29595c4;
   border: none;
   border-radius: 10px;
   color: white;
-  width: 210px;
-  height: 50px;
+  width: 215px;
+  height: 60px;
   position: absolute;
   font-size: 20px;
   transform: translate(-50%, -50%);
 }
 
-.booster_button {
+.btm_img:hover {
+  /* background-color: #c29595; */
+  /* box-shadow: 2px 2px #c76c86; */
+
+  box-shadow: 0 4px 4px 0 #c58a9a, 0 6px 10px 0 #c58d9d;
+}
+
+/* .btm_img:hover {
+  box-shadow: 0 4px #c29595c4;
+  top: 2px;
+}
+
+.btm_img:active {
+  box-shadow: 0 0 #c29595c4;
+  top: 6px;
+}
+
+.btm_img::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+} */
+
+.figure-caption {
+  margin-top: -13em;
+  margin-right: 2em;
+}
+
+/* .booster_button {
   top: 95%;
   left: 72.5%;
 }
@@ -113,7 +147,7 @@ tr.tableIcon_tr:hover {
 .carriage_button {
   top: 95%;
   left: 27%;
-}
+} */
 
 .imgCategory {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

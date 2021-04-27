@@ -1,0 +1,30 @@
+.col-md-3 {
+  display: inline-block;
+  margin-left: -4px;
+}
+.col-md-3 img {
+  width: 100%;
+  height: auto;
+}
+body .carousel-indicators li {
+  width: 3em;
+  height: 1.1em;
+  padding: 0;
+  background-color: #b83258;
+}
+body .carousel-indicators {
+  bottom: 0;
+}
+body .carousel-control-prev-icon,
+body .carousel-control-next-icon {
+  width: 1.8em;
+  height: 4em;
+  background-color: #b83258;
+}
+body .no-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+div.carousel > div.container {
+  max-width: 90em;
+}

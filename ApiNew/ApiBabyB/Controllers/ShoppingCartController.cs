@@ -1,18 +1,23 @@
-﻿using System;
+﻿using Dal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
+
 
 namespace ApiBabyB.Controllers
 {
+    [EnableCors("*", "*", "*")]
+
     public class ShoppingCartController : ApiController
     {
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
-        }    
+        }
 
         //[HttpGet]
         //[Route("api/ShoppingCart/Login/{EMail}")]
@@ -26,30 +31,13 @@ namespace ApiBabyB.Controllers
 
         //}
 
-        //[HttpPost]
-        //[Route("api/ShoppingCart/Login")]
 
-
-        //public int Login([FromBody] Users user)
-        //{
-        //    int idUser = Bl.ShoppingCartBl.GetUser(user.EMail, "1055");
-        //    if (idUser != 0)
-        //        return idUser;
-        //    return 0;
-        //}
-
-            
-
-        //[HttpGet]
-        //[Route("api/ShoppingCart/GetShopping/{IdUser}")]
-
-        //public List<Dto.ClassShoppingCart> GetShopping([FromUri] int IdUser)
-        //{
-        //        List<Dal.ShoppingCart> mylist = Bl.ShoppingCartBl.GetShopping(IdUser);
-        //        if (mylist != null)
-        //            return mylist;
-        //        return null;
-        //}
+        [HttpPost]
+        [Route("api/ShoppingCart/AddProductToCart/")]
+        public int AddProductToCart([FromBody] ShoppingCart productToCart)
+        {
+            return Bl.ShoppingCartBl.AddProductToCart(productToCart);
+        }
 
 
         [HttpGet]
@@ -57,7 +45,8 @@ namespace ApiBabyB.Controllers
 
         public List<Dto.ShoppingCart> GetShoppingByIdUser([FromUri] int IdUser)
         {
-            return Bl.ShoppingCartBl.GetShoppingByIdUser(IdUser);
+            List < Dto.ShoppingCart > DtoShoppingCart= Bl.ShoppingCartBl.GetShoppingByIdUser(IdUser);
+            return DtoShoppingCart;
             //try
             //{
             //    List<Dto.ShoppingCart> mylist = Bl.ShoppingCartBl.GetShopping(IdUser);
@@ -87,15 +76,15 @@ namespace ApiBabyB.Controllers
         //        return 0;
         //    }
         //}
-            
+
         public void Post([FromBody]string value)
         {
         }
-        
+
         public void Put(int id, [FromBody]string value)
         {
         }
-        
+
         public void Delete(int id)
         {
         }

@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ApiBabyB.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class ProductsController : ApiController
     {
 
@@ -50,6 +52,14 @@ namespace ApiBabyB.Controllers
         public Product GetProductById([FromUri] int IdProduct)
         {
             return Bl.ProductsBl.GetProductById(IdProduct);
+        }
+
+        //שולף מוצרים ששמורים בעגלת קניות
+        [HttpGet]
+        [Route("api/Products/GetListOfProductById")]
+        public List<Product> GetListOfProductById([FromUri] int[] IdProducts)
+        {
+            return Bl.ProductsBl.GetListOfProductById(IdProducts);
         }
 
 

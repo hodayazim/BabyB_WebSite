@@ -13,13 +13,13 @@ namespace Dal
             int idProduct = Convert.ToInt32(Images[(Images.Length) - 1]);
             using (Baby_BEntities db = new Baby_BEntities())
             {
-                //for (int i = 0; i < Images.Length - 1; i++)
-                //{
-                //    ProductImage im = new ProductImage();
-                //    im.IdProduct = idProduct;
-                //    im.PathImage = "/images/" + Path.GetFileName(Images[i]);
-                //    db.ProductImage.Add(im);
-                //}
+                for (int i = 0; i < Images.Length - 1; i++)
+                {
+                    ProductImage im = new ProductImage();
+                    im.IdProduct = idProduct;
+                    im.PathImage = "/images/" + System.IO.Path.GetFileName(Images[i]);
+                    db.ProductImage.Add(im);
+                }
                 try
 
                 {
@@ -32,7 +32,6 @@ namespace Dal
                     return false;
                 }
             }
-
         }
 
         public static List<ProductImage> GetImagesProduct(int idProduct)

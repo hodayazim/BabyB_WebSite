@@ -25,6 +25,7 @@ body::-webkit-scrollbar-thumb {
   background-color: #c74c64; /* color of the scroll thumb */
   border-radius: 10px; /* roundness of the scroll thumb */
   border: 4px solid rgb(247, 237, 240); /* creates padding around scroll thumb */
+  max-height: 15em;
 }
 
 .App {
@@ -44,6 +45,7 @@ input,
 button:focus {
   outline: none;
   padding: 0.5em 1em;
+  max-height: 10em;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -117,7 +119,7 @@ footer {
   width: 50px;
   height: 50px;
   position: fixed;
-  color: #ff8f75;
+  color: #d05262;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;

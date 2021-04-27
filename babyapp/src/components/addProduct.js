@@ -9,6 +9,8 @@ import Image from "./image";
 import CheckableList from "./image";
 import "../css/ManagerForms.css";
 import { Alert } from "antd";
+import swal from "sweetalert";
+import Swal from "sweetalert2";
 import { DatePicker } from "antd";
 //import { useForm } from "react-hook-form";
 
@@ -74,31 +76,43 @@ export default function AddProduct(/*{ onSubmit }*/) {
     setDescriptionProduct(val);
   }
 
-  function DepleteState() {
-    debugger;
+  function DeleteState() {
     setimages([" "]);
     setCountImages(0);
   }
 
   //מונע מהדף להתרפרש מליון פעם
   const handleSubmit = (event) => {
-    debugger;
     console.log(event);
-    AddNewProduct(
-      {
-        NameProduct: NameProduct,
-        Color: Color,
-        size: size,
-        IdSubcategory: IdSubcategory,
-        Company: Company,
-        UnitsInStock: UnitsInStock,
-        Price: Price,
-        DescriptionProduct: DescriptionProduct,
-        ImageOfProduct: ImageOfProduct,
-        CountImages: CountImages,
-      },
-      images
-    );
+    if (
+      NameProduct != "" &&
+      Company != "" &&
+      IdSubcategory != "" &&
+      Price != ""
+    )
+      AddNewProduct(
+        {
+          NameProduct: NameProduct,
+          Color: Color,
+          size: size,
+          IdSubcategory: IdSubcategory,
+          Company: Company,
+          UnitsInStock: UnitsInStock,
+          Price: Price,
+          DescriptionProduct: DescriptionProduct,
+          ImageOfProduct: ImageOfProduct,
+          CountImages: CountImages,
+        },
+        images
+      );
+    else {
+      swal({
+        icon: "error",
+        title: "הפעולה לא הושלמה",
+        text: "אחד או יותר מהשדות ריקים",
+        type: "error",
+      });
+    }
     event.preventDefault();
   };
 
@@ -177,9 +191,11 @@ export default function AddProduct(/*{ onSubmit }*/) {
   // }
 
   function GetSubCategories(selectedCategory) {
-    debugger;
     axios
-      .get("http://localhost:17374/api/Category/GetSubCategories/" + selectedCategory)
+      .get(
+        "http://localhost:17374/api/Category/GetSubCategories/" +
+          selectedCategory
+      )
       .then((result) => {
         setMyArray2(result.data);
         console.log(result.data);
@@ -197,11 +213,10 @@ export default function AddProduct(/*{ onSubmit }*/) {
                 className="form-control input"
                 autoFocus
                 placeholder=" "
-                //onChange={setNameProduct}
                 value={NameProduct}
                 onChange={(e) => changeNameProduct(e.target.value)}
               ></input>
-              <label>שם מוצר</label>
+              <label className="Add-form">שם מוצר</label>
             </div>
             <div className="col">
               <select
@@ -251,9 +266,25 @@ export default function AddProduct(/*{ onSubmit }*/) {
                 value={size}
                 onChange={(e) => changeSize(e.target.value)}
               ></input>
-              <label>מידה</label>
+              <label className="Add-form">מידה</label>
             </div>
             <div className="col">
+              <input
+                type="text"
+                list="subCategories"
+                className="form-control input"
+                placeholder=" "
+                onChange={(e) => changeIdSubcategory(e.target.value)}
+              />
+              <label className="Add-form">תת קטגוריה</label>
+              <datalist id="subCategories">
+                <option value="בחר תת קטגוריה" disabled selected></option>
+                {myArray2.map((value) => (
+                  <option>{value}</option>
+                ))}
+              </datalist>
+            </div>
+            {/* <div className="col">
               <select
                 type="select"
                 className="form-control input"
@@ -268,7 +299,8 @@ export default function AddProduct(/*{ onSubmit }*/) {
                   <option>{value}</option>
                 ))}
               </select>
-            </div>
+            </div> */}
+
             <div className="col">
               <select
                 type="select"
@@ -298,7 +330,7 @@ export default function AddProduct(/*{ onSubmit }*/) {
                 min="1"
                 onChange={(e) => changeUnitsInStock(e.target.value)}
               ></input>
-              <label>כמות</label>
+              <label className="Add-form">כמות</label>
             </div>
             <div className="col">
               <input
@@ -308,7 +340,7 @@ export default function AddProduct(/*{ onSubmit }*/) {
                 value={Price}
                 onChange={(e) => changePrice(e.target.value)}
               ></input>
-              <label>מחיר ₪</label>
+              <label className="Add-form">מחיר ₪</label>
             </div>
             {/* <Image /> */}
             <div className="col">
@@ -331,7 +363,7 @@ export default function AddProduct(/*{ onSubmit }*/) {
                 value={DescriptionProduct}
                 onChange={(e) => changeDescriptionProduct(e.target.value)}
               ></textarea>
-              <label>תיאור מוצר</label>
+              <label className="Add-form">תיאור מוצר</label>
             </div>
             <div className="col btn-col">
               {/*
@@ -347,7 +379,7 @@ export default function AddProduct(/*{ onSubmit }*/) {
               <button
                 type="button"
                 onClick={handleSubmit}
-                class="btn btn-outline-danger btn-block"
+                className="btn btn-outline-danger btn-block"
               >
                 הוסף מוצר
               </button>

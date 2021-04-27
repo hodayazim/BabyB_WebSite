@@ -3,7 +3,12 @@ import React from "react";
 // import Cybex from "../Pictures/Cybex.jpg";
 import Cybex from "../Pictures/Cybex.jpg";
 import Chicco from "../Pictures/Chicco.jpg";
+import easyWalker from "../Pictures/easyWalker.png";
 import BabyJogger from "../Pictures/BabyJogger.jpg";
+import maclaren from "../Pictures/maclaren.png";
+import inglesina from "../Pictures/inglesina.png";
+import tinyLove from "../Pictures/tinyLove.png";
+import lamaze from "../Pictures/lamaze.png";
 import $ from "jquery";
 
 // import "../css/carousel.css";
@@ -16,7 +21,7 @@ function Carousel() {
       <div className="slide-track">
         <div className="slide">
           <img
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png"
+            src={BabyJogger}
             className="img-slide"
             height="100"
             width="250"
@@ -25,7 +30,7 @@ function Carousel() {
         </div>
         <div className="slide">
           <img
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png"
+            src={maclaren}
             className="img-slide"
             height="100"
             width="250"
@@ -34,7 +39,7 @@ function Carousel() {
         </div>
         <div className="slide">
           <img
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png"
+            src={inglesina}
             className="img-slide"
             height="100"
             width="250"
@@ -43,7 +48,7 @@ function Carousel() {
         </div>
         <div className="slide">
           <img
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png"
+            src={tinyLove}
             className="img-slide"
             height="100"
             width="250"
@@ -52,7 +57,16 @@ function Carousel() {
         </div>
         <div className="slide">
           <img
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png"
+            src={easyWalker}
+            className="img-slide"
+            height="100"
+            width="250"
+            alt=""
+          />
+        </div>{" "}
+        <div className="slide">
+          <img
+            src={lamaze}
             className="img-slide"
             height="100"
             width="250"
@@ -88,7 +102,7 @@ function Carousel() {
         </div>
         <div className="slide">
           <img
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png"
+            src={maclaren}
             className="img-slide"
             height="100"
             width="250"
@@ -97,7 +111,7 @@ function Carousel() {
         </div>
         <div className="slide">
           <img
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png"
+            src={inglesina}
             className="img-slide"
             height="100"
             width="250"
@@ -106,7 +120,7 @@ function Carousel() {
         </div>
         <div className="slide">
           <img
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png"
+            src={tinyLove}
             className="img-slide"
             height="100"
             width="250"
@@ -115,7 +129,7 @@ function Carousel() {
         </div>
         <div className="slide">
           <img
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png"
+            src={easyWalker}
             className="img-slide"
             height="100"
             width="250"
@@ -124,7 +138,7 @@ function Carousel() {
         </div>
         <div className="slide">
           <img
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png"
+            src={lamaze}
             className="img-slide"
             height="100"
             width="250"
@@ -133,7 +147,16 @@ function Carousel() {
         </div>
         <div className="slide">
           <img
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png"
+            src={Cybex}
+            className="img-slide"
+            height="100"
+            width="250"
+            alt=""
+          />
+        </div>
+        <div className="slide">
+          <img
+            src={Chicco}
             className="img-slide"
             height="100"
             width="250"
