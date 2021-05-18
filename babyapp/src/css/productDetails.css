@@ -94,7 +94,7 @@ svg.arrow {
   color: #727272;
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 20px;
 }
 
 .description > p {
@@ -134,4 +134,30 @@ svg.arrow {
 
 button.btn-outline-danger {
   margin-top: 1.4em;
+}
+
+.allImages {
+  margin-top: 15em;
+  justify-content: center;
+}
+
+a.toImages {
+  /* text-decoration: none; */
+  font-size: 0.9pc;
+  border: 0;
+  outline: 0;
+  width: 125px;
+  background: none;
+  padding: 8px 0px;
+  font-weight: 500;
+  color: #515151;
+  margin-right: 5px;
+  margin-bottom: 30px;
+  font-family: inherit;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+a.toImages:hover {
+  color: #d52e3f;
 }

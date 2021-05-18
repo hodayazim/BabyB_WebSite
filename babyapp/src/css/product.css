@@ -42,8 +42,8 @@ h5.card-title {
 }
 
 .card-img-top {
-  min-height: 14.8em;
-  max-height: 14.8em;
+  min-height: 14em;
+  max-height: 14em;
 }
 
 .card-price {

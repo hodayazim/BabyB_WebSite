@@ -42,6 +42,7 @@ export default function AddProduct(/*{ onSubmit }*/) {
   const [DescriptionProduct, setDescriptionProduct] = useState("");
   const [images, setimages] = useState([""]);
   const [CountImages, setCountImages] = useState(0);
+  const [IDCategory, setIDCategory] = useState("");
 
   function changeNameProduct(val) {
     setNameProduct(val);
@@ -95,6 +96,7 @@ export default function AddProduct(/*{ onSubmit }*/) {
           NameProduct: NameProduct,
           Color: Color,
           size: size,
+
           IdSubcategory: IdSubcategory,
           Company: Company,
           UnitsInStock: UnitsInStock,
@@ -103,7 +105,8 @@ export default function AddProduct(/*{ onSubmit }*/) {
           ImageOfProduct: ImageOfProduct,
           CountImages: CountImages,
         },
-        images
+        images,
+        IDCategory
       );
     else {
       swal({
@@ -191,6 +194,7 @@ export default function AddProduct(/*{ onSubmit }*/) {
   // }
 
   function GetSubCategories(selectedCategory) {
+    setIDCategory(selectedCategory);
     axios
       .get(
         "http://localhost:17374/api/Category/GetSubCategories/" +
@@ -316,6 +320,7 @@ export default function AddProduct(/*{ onSubmit }*/) {
                 <option>Chicco</option>
                 <option>CYBEX</option>
                 <option>Twigy</option>
+                <option>Minene</option>
                 <option>BabyTech</option>
                 <option>Tommee Tippee</option>
                 <option>טל - רהיטי תינוק</option>

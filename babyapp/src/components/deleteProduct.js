@@ -6,9 +6,8 @@ import "../css/ManagerForms.css";
 import { ListBox } from "primereact/listbox";
 
 import Products from "./Product";
-import { GetProductById } from "../FUNCTION/ProductFunction";
+import { DeleteProductById } from "../FUNCTION/ProductFunction";
 import { GetSearchProducts } from "../FUNCTION/ProductFunction";
-import { GetAllProductsWithoutSearch } from "../FUNCTION/ProductFunction";
 // import Autocompletee from "./autocomplete";
 
 /*import of autocaomplete component*/
@@ -34,19 +33,6 @@ export default function DeleteProduct(data) {
   //   return <ul>{listItems}</ul>;
   // }
 
-  // useEffect(() => {
-  //   GetAllProductsWithoutSearch().then((res) => {
-  //     if (res != undefined) {
-  //       for (var i = 0; i < res.length; i++) {
-  //         ListProducts[i] = res[i];
-  //       }
-  //     } else {
-  //       ListProducts[0] = "לא נמצאו מוצרים";
-  //     }
-  //     console.log(ListProducts);
-  //   });
-  // });
-
   const [arr, setarr] = useState([[]]);
   function changenameProduct(val) {
     // if (str == " " || str == null) {
@@ -56,18 +42,6 @@ export default function DeleteProduct(data) {
     callSearch(val);
     //}
   }
-  // useEffect(() => {
-  //   GetSearchProducts().then((res) => {
-  //     console.log(res);
-  //     for (var i = 0; i < res.length; i++) {
-  //       const List = nameProduct;
-  //       List[i] = res[i].NameProduct;
-  //       setnameProduct(List);
-  //     }
-  //     setoneName(res[0].NameCategory);
-  //     console.log(nameProduct);
-  //   });
-  // });
 
   function callSearch(val) {
     // const L = GetSearchProducts();
@@ -144,30 +118,36 @@ export default function DeleteProduct(data) {
     var CardSelectProduct = "";
     for (let i = 0; i < D.length; i++) {
       if (D[i].NameProduct == val) {
+        const image = D[i].Images[0];
         CardSelectProduct =
-          '<div className="card"  style="width: 18rem;">' +
+          '<div className="card" style="width: 18rem;">' +
           // '<div >' +
-          "<img style='max-width:20px' src=" +
-          D[i].Images[0] +
-          ' className="card-img-top" alt="..."/>' +
+          '<img style="max-width:10em" src="' +
+          image +
+          '" className="card-img-min" alt="...לא נמצאו תמונות"/>' +
           // "</div>" +
           '<div className="card-body">' +
           '<h5 className="card-title">' +
           D[i].NameProduct +
           "</h5>" +
-          '<p className="card-text">' +
-          D[i].Price +
-          "</p>" +
+          // '<p className="card-text">' +
+          // D[i].Price +
+          // "</p>" +
           " </div>" +
           "</div>";
         document.getElementById(
           "CardSelectProductDIV"
         ).innerHTML = CardSelectProduct;
+        setIdSelect(D[i].IdProduct);
         // alert(JSON.stringify(res));
       }
     }
   }
 
+  function DeleteProduct() {
+    // alert("?האם אתה בטוח שתרצה למחוק מוצר זה");
+    DeleteProductById(IdSelect);
+  }
   // Configure JSS
   const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 
@@ -191,7 +171,11 @@ export default function DeleteProduct(data) {
         </ol> */}
 
         <div className="backgroundGradient">
-          <form className="AddProductForm FormContent" autoComplete="on">
+          <form
+            className="AddProductForm FormContent"
+            autoComplete="on"
+            onSubmit={(e) => DeleteProduct(e)}
+          >
             <div className="row">
               <div className="col">
                 <Autocomplete
@@ -203,6 +187,7 @@ export default function DeleteProduct(data) {
                   IdProduct={data.products.map((option) => option.IdProduct)}
                   onChange={(event, newValue) => {
                     setNameSelect(newValue);
+
                     fun(newValue);
                     // setIdSelect(option);
                   }}
@@ -211,7 +196,7 @@ export default function DeleteProduct(data) {
                       jss={jss}
                       dir="rtl"
                       {...params}
-                      label="freeSolo"
+                      // label="freeSolo"
                       className="TextField"
                       margin="normal"
                       variant="outlined"
@@ -220,6 +205,16 @@ export default function DeleteProduct(data) {
                   )}
                 />
                 <div id="CardSelectProductDIV"></div>
+                <div className="col">
+                  <button
+                    type="button"
+                    id="buttomdelete"
+                    onClick={(e) => DeleteProduct(e)}
+                    className="btn btn-outline-danger btn-block delete-btn"
+                  >
+                    למחיקת המוצר
+                  </button>
+                </div>
                 {/*
 
                   -

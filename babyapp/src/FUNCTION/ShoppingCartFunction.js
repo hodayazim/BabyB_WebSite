@@ -1,13 +1,23 @@
 import useState from "react";
 import axios from "axios";
+import { Button, message } from "antd";
 import shoppingCart from "../components/shoppingCart";
 
+const key = "updatable";
 const baseURL = "http://localhost:17374/api/";
 
+const openMessage = () => {
+  message.success({ content: "המוצר התוסף בהצלחה" });
+};
+
 export const AddProductToCart = (productId) => {
+  debugger;
   axios
     .post(`http://localhost:17374/api/ShoppingCart/AddProductToCart`, productId)
     .then(function (response) {
+      debugger;
+      openMessage();
+      console.log(response);
       return;
     });
 };
@@ -16,7 +26,9 @@ export const GetShoppingByIdUser = () => {
   debugger;
   axios
     .get(
-      `${baseURL}ShoppingCart/GetShoppingByIdUser/${localStorage.getItem("IdUser")}`
+      `${baseURL}ShoppingCart/GetShoppingByIdUser/${localStorage.getItem(
+        "IdUser"
+      )}`
     )
     .then(function (res) {
       return res.data;

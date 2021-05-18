@@ -21,5 +21,10 @@ namespace Bl
             List<Dal.ProductImage> ProductImages = ProductImageDal.GetImagesProduct(idProduct);
             return Dto.Convert.ProductImageConvert.ImagesToDto(ProductImages);
         }
+
+        public static bool DeleteProductImages(int idProduct)
+        {
+            return ProductImageDal.DeleteProductImage(idProduct);
+        }
     }
 }

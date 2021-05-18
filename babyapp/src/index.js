@@ -4,14 +4,16 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
+import shoppingCart from "./components/shoppingCart";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById("root")
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+</React.StrictMode>, 
+  document.body.appendChild(document.createElement("div"))
 );
 
 // ReactDOM.render(<div>hodayazim 1055</div>, document.getElementById("root)"));

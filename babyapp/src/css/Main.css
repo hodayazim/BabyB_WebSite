@@ -68,7 +68,7 @@ table.tableIcon {
   display: inline-flex;
 }
 
-tbody {
+tbody.tbody-main {
   display: inline-flex;
 }
 

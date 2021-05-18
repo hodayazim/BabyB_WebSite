@@ -51,5 +51,10 @@ namespace Bl
             List<Dal.Products> RequestedListProduct = Dal.ProductsDal.GetListOfProductById(idProducts);
             return Dto.Convert.ProductConvert.AllProductsToDto(RequestedListProduct);
         }
+
+        public static bool DeleteProductById(int idProduct)
+        {
+            return Dal.ProductsDal.DeleteProductById(idProduct);
+        }
     }
 }

@@ -53,11 +53,11 @@ class Loginup extends React.Component {
         // this.setState({ IdUser: res.data });
         // sessionStorage.setItem("idUser", this.state.IdUser);
         // this.setState({ redirect: true });
+        localStorage.removeItem("EMail");
         localStorage.removeItem("IdUser");
-        localStorage.removeItem("EMail");
-        localStorage.removeItem("EMail");
-        localStorage.removeItem("FirstNameUser");
         localStorage.removeItem("lastName");
+        localStorage.removeItem("FirstNameUser");
+        localStorage.removeItem("CartProduct");
 
         localStorage.setItem("IdUser", res.data.IdUser);
         localStorage.setItem("EMail", res.data.EMail);
@@ -135,6 +135,7 @@ class Loginup extends React.Component {
             localStorage.removeItem("IdUser");
             localStorage.removeItem("EMail");
             localStorage.removeItem("FirstNameUser");
+            localStorage.removeItem("CartProduct");
           }
         }
       })
@@ -314,6 +315,7 @@ class Loginup extends React.Component {
                   <input
                     type="email"
                     id="email"
+                    pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
                     placeholder="הכנס כתובת מייל"
                     className="form-control"
                     value={this.state.email}

@@ -122,7 +122,7 @@ function Main() {
       <article className="WhyOur">
         <h2 className="title"> למה BABY B? </h2>
         <table className="tableIcon">
-          <tbody>
+          <tbody className="tbody-main">
             <tr className="tableIcon_tr">
               <td>
                 <img className="iconImg" src={unnamed} />
@@ -150,11 +150,11 @@ function Main() {
           </tbody>
         </table>
       </article>
-      <article className="CompenyCarousel"  >
+      {/* <article className="CompenyCarousel">
         <h2 className="title"> מוצרים נבחרים </h2>
 
         <Carousell />
-      </article>
+      </article> */}
       <article className="CompenyCarousel">
         <h2 className="title"> החברות המובילות </h2>
         <Carousel />

@@ -5,12 +5,17 @@ import ProductDetails from "./productDetails";
 import Mios from "../Pictures/Product/MIOS_B2.jpg";
 import { GetImagesProduct } from "../FUNCTION/ProductImageFunction";
 import { GetProductById } from "../FUNCTION/ProductFunction";
+import axios from "axios";
+
 
 function Products() {
   let history = useHistory();
   const location = useLocation();
   const params = location.state;
   const Category = params.data; // localStorage.Category
+  const baseURL = "http://localhost:17374/api/";
+
+
 
   useEffect(() => {
     var maincontent = "";
@@ -43,16 +48,33 @@ function Products() {
     GetProductById(data.target.id)
       .then((res) => {
         console.log(res);
-        GetImagesProduct(res.IdProduct);
+
+        localStorage.removeItem("GetProductById");
+      localStorage.setItem("GetProductById", JSON.stringify(res));
+        //GetImagesProduct(res.IdProduct);
         // .then((res2) => {
         //   console.log(res2);
         // })
         // .catch((err2) => {
         //   console.log(err2);
-        // });
-        const images = JSON.parse(localStorage.getItem("ImagesProduct"));
-        history.push("/ProductDetails", { data: res, image: images });
-        window.location.reload();
+        // });axios
+    axios.get(`${baseURL}ProductImage/GetImagesProduct/${res.IdProduct}`)
+    .then((res2) => {
+      console.log(res2);
+      localStorage.removeItem("ImagesProduct");
+      localStorage.setItem("ImagesProduct", JSON.stringify(res2.data));
+      window.location.reload();
+
+      debugger;
+      return;
+    })
+    .catch(function (error) {
+      console.log(error);
+      return;
+    });
+    history.push("/ProductDetails");
+
+
       })
       .catch((err) => {
         console.log(err);

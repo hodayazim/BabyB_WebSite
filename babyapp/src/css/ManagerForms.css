@@ -50,6 +50,7 @@ div.ManagerForms {
 .FormContent {
   width: 600px;
   /*width: 800px;*/
+  padding-bottom: 1em;
   padding-top: 1em;
   border-radius: 2em;
   margin-right: 7px;
@@ -184,7 +185,19 @@ p.explain {
 }
 .text-break {
   max-width: 20em;
+  float: right;
+  margin-right: -27em;
+  margin-left: 9em;
 }
+
+.delete-btn {
+  margin-top: 6em;
+}
+.card-img-min {
+  min-height: 6em;
+  max-height: 6em;
+}
+
 /* auto complete*/
 .MuiInputBase-fullWidth {
   width: 90%;

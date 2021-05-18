@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+import "../css/input.css";
 import "../css/productDetails.css";
 import { AddProductToCart } from "../FUNCTION/ShoppingCartFunction";
 
@@ -6,6 +8,7 @@ function ProductDetails(ssdd) {
   const [IdUser, setIdUser] = useState("");
   const [IdProduct, setIdProduct] = useState("");
   const [Category, setCategory] = useState("");
+  const [Count, setCount] = useState(1);
   const [Subcategory, setSubcategory] = useState("");
   const [DateAdded, setDateAdded] = useState("");
   const [AmountOfPurchases, setAmountOfPurchases] = useState("");
@@ -13,6 +16,7 @@ function ProductDetails(ssdd) {
   // const [ImagesProduct, setImagesProduct] = useState(
   //   localStorage.getItem("ImagesProduct")
   // );
+  var unit = 1;
 
   var images = JSON.parse(localStorage.getItem("ImagesProduct"));
   for (let i = 0; i < images.length; i++) {
@@ -33,18 +37,36 @@ function ProductDetails(ssdd) {
     event.preventDefault();
   };
 
+  function ChangeCountPlus() {
+    debugger;
+    if (unit < 10) {
+      unit += 1;
+      document.getElementsByClassName("ctrl__counter-input").DOM = unit;
+    }
+    // setCount(unit);
+  }
+
+  function ChangeCountMinus() {
+    debugger;
+    if (unit > 1) {
+      unit -= 1;
+      // setCount(unit);
+    }
+  }
+
   function goBack() {
     alert("goBack");
     window.history.back();
   }
 
-  const params = window.history.state.state.data;
-  console.log(params);
+  const params = JSON.parse(localStorage.getItem("GetProductById"));
+  // console.log(params);
   return (
-    <div className="row row-cols-1 flex-xl-row-reverse Product">
-      <div className="cardProduct">
-        <nav className="navProduct">
-          {/* <svg
+    <>
+      <div className="row row-cols-1 flex-xl-row-reverse Product">
+        <div className="cardProduct">
+          <nav className="navProduct">
+            {/* <svg
               className="arrow" onClick={() => goBack()}
               version="1.1"
               viewBox="0 0 512 512"
@@ -55,8 +77,8 @@ function ProductDetails(ssdd) {
                 stroke="#727272"
               />
             </svg> */}
-          חזור לכל {localStorage.Category}
-          {/* <svg
+            חזור לכל {localStorage.Category}
+            {/* <svg
             className="heart"
             version="1.1"
             viewBox="0 0 512 512"
@@ -69,27 +91,91 @@ function ProductDetails(ssdd) {
               stroke="#727272"
             />
           </svg> */}
-        </nav>
-        <div className="photo">
-          <img
-            className="imgProduct"
-            src={window.history.state.state.image[0].PathImage}
-          />
-        </div>
-        <div className="description">
-          <h2>{params.NameProduct}</h2>
-          <br />
-          <h5>{params.Company} :חברה </h5>
-          <h4> ₪ {params.Price}</h4>
-          <p>{params.DescriptionProduct}</p>
+          </nav>
+          <div className="photo">
+            <img
+              className="imgProduct"
+              // src={window.history.state.state.image[0].PathImage}
+              src={PathImages[0]}
+            />
+          </div>
+          <div className="description">
+            <h2>{params.NameProduct}</h2>
+            <br />
+            <h5>{params.Company} :חברה </h5>
+            <h4> ₪ {params.Price}</h4>
+            <p>{params.DescriptionProduct}</p>
+            <div className="ctrl">
+              <div
+                className="ctrl__button ctrl__button--decrement"
+                onClick={(e) => {
+                  ChangeCountMinus(e.target.value);
+                }}
+              >
+                &ndash;
+              </div>
+              <div className="ctrl__counter">
+                <div className="ctrl__counter-num">
+                  <input
+                    type="text"
+                    min="1"
+                    max="10"
+                    pattern="[1-9]{2}"
+                    className="ctrl__counter-input"
+                    value={unit}
+                    onChange={(e) => {
+                      console.log(unit);
+                    }}
+                  />
+                </div>
+              </div>
+              <div
+                className="ctrl__button ctrl__button--increment"
+                onClick={(e) => {
+                  ChangeCountPlus();
+                }}
+              >
+                +
+              </div>
+            </div>
+            <button>
+              <a href="#allImages" className="toImages">
+                לעוד תמונות{" "}
+              </a>
+            </button>
 
-          <button>Wishlist</button>
-          <button type="button" onClick={AddToCart}>
-            הוסף לסל הקניות
-          </button>
+            <button type="button" onClick={AddToCart}>
+              הוסף לסל הקניות
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+      <div
+        className="row row-cols-1 flex-xl-row-reverse allImages"
+        id="allImages"
+      >
+        <img
+          src={PathImages[0]}
+          className="rounded float-left modal-sm"
+          alt=""
+        />
+        <img
+          src={PathImages[1]}
+          className="rounded float-left modal-sm"
+          alt=""
+        />
+        <img
+          src={PathImages[2]}
+          className="rounded float-left modal-sm"
+          alt=""
+        />
+        <img
+          src={PathImages[3]}
+          className="rounded float-left modal-sm"
+          alt=""
+        />
+      </div>
+    </>
   );
 }
 export default ProductDetails;

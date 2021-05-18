@@ -18,7 +18,7 @@
 
 .c-bag-table {
   width: 100%;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .c-bag-table thead th {
@@ -36,8 +36,17 @@ table {
   border-spacing: 0;
 }
 
+.thead-table {
+  font-size: 1.5em;
+}
+
+.tbodt-table {
+  font-weight: 300;
+  font-size: 1.27em;
+}
+
 .col-xs-6 {
-  width: 50%;
+  min-width: 40%;
 }
 
 .col-xs-2,
@@ -45,8 +54,15 @@ table {
   float: right !important;
 }
 
+.col-xs-4 {
+  width: 10em;
+}
 .col-xs-2 {
-  width: 16.66666667%;
+  width: 18%;
+}
+
+.good-total {
+  width: 5em;
 }
 
 .col-sm-8,
@@ -68,4 +84,30 @@ table {
   height: 152px;
   position: relative;
   overflow: hidden;
+}
+
+.mini-img {
+  max-width: 10em;
+  min-width: 10em;
+}
+
+.col-sm-10 {
+  max-width: 40em;
+}
+
+.big-div {
+  margin-right: 1em;
+}
+
+.totalLine {
+  line-height: 2em;
+  background-color: rgb(226, 226, 226);
+}
+
+.total-price {
+  min-width: 20em;
+}
+
+.btnmyheaderPink.end-btn {
+  margin-top: 3em;
 }

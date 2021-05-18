@@ -49,7 +49,7 @@ namespace ApiBabyB.Controllers
             {
                 return -1;
             }
-            sendEmail("g", "d");
+            sendEmail(register.EMail, "d");
             return Bl.UsersBl.Register(register);
 
         }
@@ -72,9 +72,9 @@ namespace ApiBabyB.Controllers
 
         public static bool sendEmail(string email, string survayId)
         {
-            email = "hodayazim.m@gmail.com";
+            //email = "hodayazim.m@gmail.com";
             MailMessage msg = new MailMessage();
-            msg.From = new MailAddress("babyb.site@gmail.com");
+            msg.From = new MailAddress("final.project.sg@gmail.com");
             msg.To.Add(new MailAddress(email));
             msg.Subject = "it's working!";
             msg.IsBodyHtml = true;
@@ -85,7 +85,7 @@ namespace ApiBabyB.Controllers
             client.Port = 587;
             client.EnableSsl = true;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.Credentials = new NetworkCredential("babyb.site@gmail.com", "BabyBWEbSite");
+            client.Credentials = new NetworkCredential("final.project.sg@gmail.com", "she123G!");
             msg.BodyEncoding = Encoding.Default;
             try
             {

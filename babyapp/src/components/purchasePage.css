@@ -1,0 +1,23 @@
+.the-big-div {
+  text-align: -webkit-center;
+}
+
+.closeCart {
+  max-width: 10em;
+}
+
+.list-group {
+  max-width: 35em;
+  margin-top: 5em;
+}
+
+.list-group-item.active {
+  background-color: #dc3546d8;
+  border-color: #dc3546c9;
+}
+
+.endd {
+  margin-top: 3em;
+  /* margin-right: 3em; */
+  max-width: 25em;
+}

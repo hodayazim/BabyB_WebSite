@@ -32,5 +32,10 @@ namespace ApiBabyB.Controllers
         {
             return ProductImageBl.GetImagesProduct(IdProduct);
         }
+
+        internal static bool DeleteProductImage(int idProduct)
+        {
+           return Bl.ProductImageBl.DeleteProductImages(idProduct);
+        }
     }
 }

@@ -76,14 +76,22 @@ namespace ApiBabyB.Controllers
                     db.SaveChanges();
                     return product.IdProduct;
                 }
-                //catch (Exception e)
-                catch
+                catch (Exception e)
                 {
                     return 0;
                 }
 
             }
         }
+
+        [HttpDelete]
+        [Route("api/Products/DeleteProductById/{IdProduct}")]
+        public bool DeleteProductById([FromUri]int idProduct)
+        {
+            ProductImageController.DeleteProductImage(idProduct);
+            return Bl.ProductsBl.DeleteProductById(idProduct);
+        }
+
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
@@ -102,8 +110,6 @@ namespace ApiBabyB.Controllers
         {
         }
 
-        public void Delete(int id)
-        {
-        }
+
     }
 }

@@ -34,6 +34,29 @@ namespace Dal
             }
         }
 
+        public static bool DeleteProductImage(int idProduct)
+        {
+            using (Baby_BEntities db = new Baby_BEntities())
+            {
+                List<ProductImage> ListImagesToDlete = db.ProductImage.Where(x => x.IdProduct == idProduct).ToList<ProductImage>();
+                for (int i = 0; i < ListImagesToDlete.Count; i++)
+                {
+                    db.ProductImage.Remove(ListImagesToDlete[i]);
+                }
+                try
+                {
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return false;
+                }
+
+            }
+        }
+
         public static List<ProductImage> GetImagesProduct(int idProduct)
         {
             List<ProductImage> Images = new List<ProductImage>();

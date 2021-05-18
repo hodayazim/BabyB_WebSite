@@ -16,6 +16,7 @@ import Loginup from "./components/login_up.js";
 import AddProduct from "./components/addProduct";
 import ErrorNetwork from "./components/errNetwork";
 import ShoppingCart from "./components/shoppingCart";
+import PurchasePage from "./components/purchasePage.js";
 import ManagerForms from "./components/ManagerForms.js";
 import ProductDetails from "./components/productDetails";
 
@@ -60,7 +61,7 @@ import { AiOutlineUpCircle } from "react-icons/ai";
 
 function App() {
   return (
-    <div className="App">
+    <div  id="app" className="App">
       {/* <span id="top"></span> */}
       <MyHeader />
       <div className="bodyApp">
@@ -94,6 +95,9 @@ function App() {
             </Route>
             <Route path="/ProductDetails/">
               <ProductDetails />
+            </Route>
+            <Route path="/purchasePage/">
+              <PurchasePage />
             </Route>
             <Route path="*" component={Error} />
           </Switch>

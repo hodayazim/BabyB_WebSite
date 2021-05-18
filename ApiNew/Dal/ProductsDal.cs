@@ -49,6 +49,30 @@ namespace Dal
             return L;
         }
 
+        public static bool DeleteProductById(int idProduct)
+        {
+            using (Baby_BEntities db = new Baby_BEntities())
+            {
+                Products deleteProduct = db.Products.Where(x => x.IdProduct == idProduct).FirstOrDefault();
+                //from item in db.Products
+                //    where item.IdProduct == idProduct
+                //    select item;
+                db.Products.Remove(deleteProduct);
+                try
+                {
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return false;
+                }
+
+            }
+
+        }
+
         public static List<Products> GetListOfProductById(int[] idProducts)
         {
             List<int> jj = idProducts.ToList<int>();
@@ -67,6 +91,7 @@ namespace Dal
                     }
                 }
             }
+
             return RequestedListProduct;
         }
 

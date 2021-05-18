@@ -16,6 +16,7 @@ import axios from "axios";
 import "antd/dist/antd.css";
 import { DownloadOutlined } from "@ant-design/icons";
 import { BiHeart, BiShoppingBag } from "react-icons/bi";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import {
   AiOutlineForm,
   AiOutlineShopping,
@@ -26,7 +27,6 @@ import {
   GetProductsByStr,
   GetListProductsById,
 } from "../FUNCTION/ProductFunction";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 
 function MyHeader() {
   let history = useHistory();
@@ -39,6 +39,12 @@ function MyHeader() {
   const [EmptyArr2, setEmptyArr2] = useState([""]);
 
   var stringTry = "?";
+
+  window.onload = function () {
+    if (localStorage.getItem("IdUser") != 15) {
+      document.getElementById("iconManager").style.visibility = "hidden";
+    }
+  };
   // for (let i = 0; i < array.length; i++) {
   //   stringTry += "jj" + array[i];
   // }
@@ -107,22 +113,28 @@ function MyHeader() {
         )}`
       )
       .then((res) => {
-        setEmptyArr([]);
-        const AllProduct = EmptyArr;
+        // setEmptyArr([]);
+        // const AllProduct = EmptyArr;
         const arr = res.data;
-        arr.forEach((item) => {
-          // AllProduct.push(item.IdProduct);
-          //?IdProducts=9&IdProducts=7
-          stringTry += "IdProducts=" + item.IdProduct + "&";
-        });
-        GetListProductsById(stringTry)
-          .then((ress) => {
-            console.log(ress);
-            alert(ress);
-          })
-          .catch((r) => {
-            alert(r);
+        if (arr["length"] != 0) {
+          arr.forEach((item) => {
+            // AllProduct.push(item.IdProduct);
+            //?IdProducts=9&IdProducts=7
+            stringTry += "IdProducts=" + item.IdProduct + "&";
           });
+          axios
+            .get(
+              `http://localhost:17374/api/Products/GetListOfProductById${stringTry}`
+            )
+            .then((res2) => {
+              debugger;
+              localStorage.setItem("CartProduct", JSON.stringify(res2.data));
+            })
+            .catch(function (error) {
+              debugger;
+              console.log(error);
+            });
+        }
         history.push("/ShoppingCart", {
           data: arr,
           // List: ListOfProducts,
@@ -180,8 +192,8 @@ function MyHeader() {
           <Search />
         </div>
 
-        <Link to="/ManagerForms">
-          <AiOutlineForm onClick=" " className="linkIcon a" />
+        <Link id="iconManager" to="/ManagerForms">
+          <AiOutlineForm onClick=" " id="iconManager" className="linkIcon a" />
         </Link>
 
         <Link to="/ShoppingCart">
