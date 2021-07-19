@@ -10,7 +10,6 @@ import Carousel from "./carousel";
 import Carousell from "./carousell";
 import hand from "../Pictures/hand.png";
 import track from "../Pictures/track.png";
-//import ShoppingCart from "./shoppingCart";
 import credit from "../Pictures/credit.png";
 import unnamed from "../Pictures/unnamed.png";
 import fooding_2 from "../Pictures/fooding_2.jpg";
